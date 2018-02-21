@@ -1,0 +1,8 @@
+app_identifier "com.snowflake.depunaise" # The bundle identifier of your app
+apple_id "bingsteup@gmail.com" # Your Apple email address
+
+itc_team_id "118967703" # iTunes Connect Team ID
+team_id "Y4UBF4DJTK" # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
