@@ -16,7 +16,7 @@ platform :ios do
   desc 'Build the iOS application.'
   private_lane :build do
     certificates
-    increment_build_number(xcodeproj: './ios/DePunaise.xcworkspace')
+    increment_build_number(xcodeproj: './ios/DePunaise.xcodeproj')
     gym(scheme: 'DePunaise', project: './ios/DePunaise.xcworkspace')
   end
 
@@ -24,7 +24,7 @@ platform :ios do
   lane :beta do
     build
     pilot
-    commit_version_bump(message: 'Bump build', xcodeproj: './ios/DePunaise.xcworkspace')
+    commit_version_bump(message: 'Bump build', xcodeproj: './ios/DePunaise.xcodeproj')
     push_to_git_remote
   end
 end
