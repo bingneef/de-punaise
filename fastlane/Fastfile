@@ -24,8 +24,15 @@ platform :ios do
   lane :beta do
     build
     pilot
+    refresh_dsyms
     commit_version_bump(message: 'Bump build', xcodeproj: './ios/DePunaise.xcodeproj')
     push_to_git_remote
+  end
+
+  lane :refresh_dsyms do
+    download_dsyms
+    upload_symbols_to_crashlytics(binary_path: './ios/Pods/Fabric/upload-symbols')
+    clean_build_artifacts
   end
 end
 

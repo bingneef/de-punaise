@@ -26,6 +26,11 @@ Fetch certificates and provisioning profiles
 fastlane ios beta
 ```
 Ship to Testflight.
+### ios refresh_dsyms
+```
+fastlane ios refresh_dsyms
+```
+
 
 ----
 

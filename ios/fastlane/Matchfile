@@ -1,7 +1,0 @@
-git_url "https://github.com/bingneef/de-punaise"
-
-type "development"
-shallow_clone "false"
-
-app_identifier "com.snowflake.depunaise"
-username "bingsteup@gmail.com"
