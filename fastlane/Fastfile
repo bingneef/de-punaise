@@ -17,7 +17,7 @@ platform :ios do
   private_lane :build do
     certificates
     increment_build_number(xcodeproj: './ios/DePunaise.xcodeproj')
-    gym(scheme: 'DePunaise', project: './ios/DePunaise.xcworkspace')
+    gym(scheme: 'DePunaise', workspace: './ios/DePunaise.xcworkspace')
   end
 
   desc 'Ship to Testflight.'

@@ -130,16 +130,6 @@ PODS:
     - gRPC-Core (= 1.9.1)
     - gRPC-RxLibrary (= 1.9.1)
   - GTMSessionFetcher/Core (1.1.13)
-  - KSCrash/Core (1.15.16):
-    - KSCrash/Reporting/Filters/Basic
-  - KSCrash/Recording (1.15.16):
-    - KSCrash/Recording/Tools (= 1.15.16)
-  - KSCrash/Recording/Tools (1.15.16)
-  - KSCrash/Reporting/Filters/Base (1.15.16):
-    - KSCrash/Recording
-  - KSCrash/Reporting/Filters/Basic (1.15.16):
-    - KSCrash/Recording
-    - KSCrash/Reporting/Filters/Base
   - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -147,46 +137,6 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.5.0)
-  - React (0.53.3):
-    - React/Core (= 0.53.3)
-  - React/BatchedBridge (0.53.3):
-    - React/Core
-    - React/cxxreact_legacy
-  - React/Core (0.53.3):
-    - yoga (= 0.53.3.React)
-  - React/cxxreact_legacy (0.53.3):
-    - React/jschelpers_legacy
-    - React/jsinspector_legacy
-  - React/DevSupport (0.53.3):
-    - React/Core
-    - React/RCTWebSocket
-  - React/fishhook (0.53.3)
-  - React/jschelpers_legacy (0.53.3)
-  - React/jsinspector_legacy (0.53.3)
-  - React/RCTBlob (0.53.3):
-    - React/Core
-  - React/RCTImage (0.53.3):
-    - React/Core
-    - React/RCTNetwork
-  - React/RCTNetwork (0.53.3):
-    - React/Core
-  - React/RCTText (0.53.3):
-    - React/Core
-  - React/RCTWebSocket (0.53.3):
-    - React/Core
-    - React/fishhook
-    - React/RCTBlob
-  - Sentry (3.10.0):
-    - Sentry/Core (= 3.10.0)
-    - Sentry/KSCrash (= 3.10.0)
-  - Sentry/Core (3.10.0)
-  - Sentry/KSCrash (3.10.0):
-    - KSCrash/Core (~> 1.15.12)
-  - SentryReactNative (0.34.0):
-    - React
-    - Sentry (~> 3.10.0)
-    - Sentry/KSCrash (~> 3.10.0)
-  - yoga (0.53.3.React)
 
 DEPENDENCIES:
   - Crashlytics (~> 3.9.3)
@@ -201,23 +151,6 @@ DEPENDENCIES:
   - Firebase/Performance
   - Firebase/RemoteConfig
   - Firebase/Storage
-  - React/BatchedBridge (from `../node_modules/react-native`)
-  - React/Core (from `../node_modules/react-native`)
-  - React/DevSupport (from `../node_modules/react-native`)
-  - React/RCTImage (from `../node_modules/react-native`)
-  - React/RCTNetwork (from `../node_modules/react-native`)
-  - React/RCTText (from `../node_modules/react-native`)
-  - React/RCTWebSocket (from `../node_modules/react-native`)
-  - SentryReactNative (from `../node_modules/react-native-sentry`)
-  - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
-
-EXTERNAL SOURCES:
-  React:
-    :path: ../node_modules/react-native
-  SentryReactNative:
-    :path: ../node_modules/react-native-sentry
-  yoga:
-    :path: ../node_modules/react-native/ReactCommon/yoga
 
 SPEC CHECKSUMS:
   BoringSSL: f3d6b8ce199b9c450a8cfc14895d07a2627fc232
@@ -244,15 +177,10 @@ SPEC CHECKSUMS:
   gRPC-ProtoRPC: f29e8b7445e0d3c0311678ab121e6c164da4ca5e
   gRPC-RxLibrary: 8e0067bfe8a054022c7a81470baace4f2f633b48
   GTMSessionFetcher: 5bb1eae636127de695590f50e7d248483eb891e6
-  KSCrash: e4cda5c8612c5f9478defcf43418f24870d313f4
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
-  React: af66244a7d630be2aef03b4ddfe3570e4eff39fc
-  Sentry: 546079394a729c35ba8c10332942c25f96cac921
-  SentryReactNative: a306955d6c4b45954ff04d2fbeaa536f947f5ba4
-  yoga: 55da126afc384965b96bff46652464373b330add
 
-PODFILE CHECKSUM: da4e1c70df8472a0ad61db2f6ef912b78b8d8cff
+PODFILE CHECKSUM: 96744ce2847c9accb1f1db2dda58be41cfd3669e
 
 COCOAPODS: 1.4.0
