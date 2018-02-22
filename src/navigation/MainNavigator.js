@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View } from 'react-native'
+import { View, StatusBar } from 'react-native'
 import { StackNavigator } from 'react-navigation'
 
 import { rehydrate, fetchRemoteConfig, anonymousLogin } from '../actions'
@@ -59,7 +59,12 @@ export default class NewsListNavigator extends Component {
     if (!rehydrated || !remoteConfig || !user) {
       return <View style={{ flex: 1, backgroundColor: 'white' }} />
     } else if (!onboarding.completed) {
-      return <OnboardingNavigator />
+      return (
+        <View style={{flex: 1}}>
+          <StatusBar barStyle="light-content"/>
+          <OnboardingNavigator />
+        </View>
+      )
     }
 
     return <NewsListStackNavigator />

@@ -1,10 +1,7 @@
 import React from 'react'
 import { StyleSheet, FlatList, TouchableOpacity, Platform, Image, View, RefreshControl, ActivityIndicator } from 'react-native'
 import { NavigationActions } from 'react-navigation'
-import {
-  RkCard, RkStyleSheet,
-  RkText
-} from 'react-native-ui-kitten'
+import { RkCard, RkStyleSheet, RkText } from 'react-native-ui-kitten'
 import { truncate } from 'underscore.string'
 import { setUser, setPosts } from '../actions'
 import { connect } from 'react-redux'
@@ -102,7 +99,6 @@ export default class NewsList extends React.Component {
               <RkText rkType='primary3 mediumLine' numberOfLines={2}>{item.excerpt}</RkText>
             </View>
           </View>
-          <View rkCardFooter />
         </RkCard>
       </TouchableOpacity>
     )
@@ -150,6 +146,7 @@ export default class NewsList extends React.Component {
         renderItem={ this.renderItem }
         keyExtractor={ this._keyExtractor }
         style={ styles.root }
+        contentContainerStyle={styles.container}
         scrollEventThrottle={ 200 }
         onScroll={(e) => {
           let paddingToBottom = 40
@@ -167,6 +164,9 @@ const styles = RkStyleSheet.create(theme => ({
   root: {
     backgroundColor: theme.colors.screen.base,
     flex: 1,
+  },
+  container: {
+    paddingBottom: 48,
   },
   header: {
     justifyContent: 'flex-end',

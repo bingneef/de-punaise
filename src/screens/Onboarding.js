@@ -1,9 +1,10 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import AppIntroSlider from 'react-native-app-intro-slider'
-import { setOnboarding } from '../actions'
 import { connect } from 'react-redux'
-
+import firebase from 'react-native-firebase'
+import { setOnboarding } from '../actions'
+import Default from '../components/Onboarding/Default'
 const styles = StyleSheet.create({
   image: {
     width: 320,
@@ -13,28 +14,28 @@ const styles = StyleSheet.create({
 
 const slides = [
   {
-    key: 'somethun',
-    title: 'Title 1',
-    text: 'Description.\nSay something cool',
-    image: require('../../assets/RNFirebase512x512.png'),
+    key: 'first',
+    fatTitle: 'De Punaise',
+    text: 'Voor al je nieuws en onzin\nover Ariston \'80',
+    image: require('../../assets/onboarding/news-report.png'),
     imageStyle: styles.image,
-    backgroundColor: '#59b2ab',
+    backgroundColor: '#3949AB',
   },
   {
-    key: 'somethun-dos',
-    title: 'Title 2',
-    text: 'Other cool stuff',
-    image: require('../../assets/RNFirebase512x512.png'),
+    key: 'second',
+    fatTitle: 'Eigen ideëen?',
+    text: 'Straks kan je zelf\nde redactie tippen!',
+    image: require('../../assets/onboarding/idea.png'),
     imageStyle: styles.image,
-    backgroundColor: '#febe29',
+    backgroundColor: '#F44336',
   },
   {
-    key: 'somethun1',
-    title: 'Rocket guy',
-    text: 'I\'m already out of descriptions\n\nLorem ipsum bla bla bla',
-    image: require('../../assets/RNFirebase512x512.png'),
+    key: 'third',
+    fatTitle: 'Meer features',
+    text: 'Er komen meer features aan,\ndus hou de app in de gaten!',
+    image: require('../../assets/onboarding/football.png'),
     imageStyle: styles.image,
-    backgroundColor: '#22bcb5',
+    backgroundColor: '#757575',
   }
 ]
 
@@ -47,19 +48,24 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
 
-    this._onDone = this._onDone.bind(this)
-
+    this.onDone = this._onDone.bind(this)
   }
 
   _onDone = () => {
+    firebase.analytics().logEvent('onboarding', {completed: true})
     this.props.dispatch(setOnboarding({completed: true}))
+  }
+
+  renderItem (props) {
+    return <Default data={props} />
   }
 
   render() {
     return (
       <AppIntroSlider
         slides={slides}
-        onDone={this._onDone}
+        renderItem={this.renderItem}
+        onDone={this.onDone}
       />
     )
   }

@@ -7,11 +7,12 @@ import { SafeAreaView } from 'react-navigation'
 import { ApolloProvider } from 'react-apollo'
 import {withRkTheme} from 'react-native-ui-kitten';
 
-import {bootstrap} from './config/bootstrap';
+import {bootstrap} from './src/config/bootstrap';
 import { setupNotifications } from './src/services/notifications'
 import { client } from './src/services/graphql/interface'
 
 import ErrorBoundary from './src/screens/ErrorBoundary'
+import SplashScreen from 'react-native-splash-screen'
 
 import './config/ReactotronConfig'
 
@@ -25,6 +26,7 @@ class App extends React.Component {
   componentDidMount() {
     // FIXME: Later
     // setupNotifications()
+    SplashScreen.hide()
   }
 
   render () {
