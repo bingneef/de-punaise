@@ -16,9 +16,7 @@ const hydrate = store => next => async reducer => {
 
   try {
     await AsyncStorage.setItem('@hydration', JSON.stringify(nextState))
-  } catch (error) {
-    console.error(error)
-  }
+  } catch (error) { }
 
   return next(_ => nextState)
 }

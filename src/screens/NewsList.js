@@ -11,6 +11,7 @@ import { connect } from 'react-redux'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import moment from 'moment'
+import firebase from 'react-native-firebase'
 
 const limit = 10
 
@@ -73,6 +74,8 @@ export default class NewsList extends React.Component {
     super()
 
     this.renderItem = this._renderItem.bind(this)
+    this.onRefresh = this._onRefresh.bind(this)
+    this.loadMore = this._loadMore.bind(this)
 
     this.state = {
       refreshing: false,
@@ -109,7 +112,7 @@ export default class NewsList extends React.Component {
     return item.id
   }
 
-  async onRefresh () {
+  async _onRefresh () {
     if (this.state.refreshing) {
       return
     }
@@ -118,7 +121,7 @@ export default class NewsList extends React.Component {
     this.setState({refreshing: false})
   }
 
-  async loadMore () {
+  async _loadMore () {
     const { totalCount, feed } = this.props.posts
     const nothingLeftToLoad = totalCount ==  feed.length
     if (this.state.loadingMore || nothingLeftToLoad) {
@@ -128,12 +131,14 @@ export default class NewsList extends React.Component {
     this.setState({loadingMore: true})
     await this.props.loadMorePosts()
     this.setState({loadingMore: false})
+
+    firebase.analytics().logEvent('scroll_more', {currentCount: feed.length, totalCount})
   }
 
   render() {
-    if (this.props.loading && !this.state.loadingMore) {
+    if (this.props.loading && (!this.state.loadingMore && !this.state.refreshing)) {
       return (
-        <View style={styles.container} />
+        <View style={styles.root} />
       )
     }
 
@@ -144,7 +149,7 @@ export default class NewsList extends React.Component {
         data={ feed }
         renderItem={ this.renderItem }
         keyExtractor={ this._keyExtractor }
-        style={ styles.container }
+        style={ styles.root }
         scrollEventThrottle={ 200 }
         onScroll={(e) => {
           let paddingToBottom = 40
@@ -159,9 +164,9 @@ export default class NewsList extends React.Component {
 }
 
 const styles = RkStyleSheet.create(theme => ({
-  container: {
-    backgroundColor: 'white',
-    flex: 1
+  root: {
+    backgroundColor: theme.colors.screen.base,
+    flex: 1,
   },
   header: {
     justifyContent: 'flex-end',

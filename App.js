@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StatusBar } from 'react-native'
 import { Provider } from 'react-redux'
-import NewsListNavigator from './src/navigation/NewsListNavigator'
+import MainNavigator from './src/navigation/MainNavigator'
 import store from './src/store'
 import { SafeAreaView } from 'react-navigation'
 import { ApolloProvider } from 'react-apollo'
@@ -23,7 +23,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    setupNotifications()
+    // FIXME: Later
+    // setupNotifications()
   }
 
   render () {
@@ -32,7 +33,7 @@ class App extends React.Component {
         <ErrorBoundary>
           <Provider store={store}>
             <ApolloProvider client={client}>
-              <NewsListNavigator/>
+              <MainNavigator/>
             </ApolloProvider>
           </Provider>
         </ErrorBoundary>

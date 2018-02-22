@@ -9,6 +9,7 @@ import ParallaxScrollView from 'react-native-parallax-scroll-view'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import moment from 'moment'
+import firebase from 'react-native-firebase'
 
 @graphql(gql`
   query($postId: String!) {
@@ -38,11 +39,10 @@ export default class NewsItem extends React.Component {
     super()
 
     this._close = this._close.bind(this)
+  }
 
-    this.state = {
-      post: null,
-      loading: true,
-    }
+  componentDidMount() {
+    firebase.analytics().logEvent('post_view', {id: this.props.navigation.state.params.id})
   }
 
   _close () {
@@ -52,7 +52,7 @@ export default class NewsItem extends React.Component {
   render() {
     if (this.props.data.loading) {
       return (
-        <View>
+        <View style={styles.root}>
           <ActivityIndicator
             animating={ true }
             style={{height: 80}}
@@ -71,7 +71,7 @@ export default class NewsItem extends React.Component {
           <View rkCardHeader>
             <View>
               <RkText style={styles.title} rkType='header4'>{post.title}</RkText>
-              <RkText rkType='secondary2 hintColor'>{moment().add(new Date(), 'seconds').fromNow()}</RkText>
+              <RkText rkType='secondary2 hintColor'>{moment(post.pubDateTimestamp).fromNow()}</RkText>
             </View>
           </View>
           <View rkCardContent>
@@ -81,37 +81,7 @@ export default class NewsItem extends React.Component {
               ))}
             </View>
           </View>
-          <View rkCardFooter />
         </RkCard>
-      </ScrollView>
-    )
-
-    return (
-      <ScrollView style={styles.container}>
-        <StatusBar hidden={ true } />
-        <Image
-          style={{height: Dimensions.get('window').width * 3 / 4}}
-          source={{uri: post.image.url}} />
-
-        <TouchableOpacity onPress={this._close} style={styles.closeIconContainer}>
-          <Icon
-            ios='ios-close-circle'
-            android='ios-close-circle'
-            style={styles.closeIcon}
-          />
-        </TouchableOpacity>
-
-        <View style={styles.content}>
-          <Text style={styles.title}>
-            { post.title }
-          </Text>
-
-          { post.content.map((paragraph, index) => (
-            <Text key={index} style={styles.paragraph}>
-              { paragraph}
-            </Text>
-          ))}
-        </View>
       </ScrollView>
     )
   }
@@ -119,7 +89,9 @@ export default class NewsItem extends React.Component {
 
 const styles = RkStyleSheet.create(theme => ({
   root: {
-    backgroundColor: theme.colors.screen.base
+    backgroundColor: theme.colors.screen.base,
+    flex: 1,
+    borderBottomWidth: 0,
   },
   title: {
     marginBottom: 5

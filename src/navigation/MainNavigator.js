@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 import { View } from 'react-native'
 import { StackNavigator } from 'react-navigation'
 
-import { rehydrate, fetchRemoteConfig } from '../actions'
+import { rehydrate, fetchRemoteConfig, anonymousLogin } from '../actions'
 import NewsList from '../screens/NewsList'
 import NewsItem from '../screens/NewsItem'
 import Onboarding from '../screens/Onboarding'
 
-const RootNavigator = StackNavigator(
+const OnboardingNavigator = StackNavigator(
   {
     Onboarding: {
       screen: Onboarding,
@@ -50,15 +50,16 @@ export default class NewsListNavigator extends Component {
     // Fix race issue and don't call them at the same time
     await this.props.dispatch(rehydrate())
     await this.props.dispatch(fetchRemoteConfig())
+    await this.props.dispatch(anonymousLogin())
   }
 
   render () {
     const { rehydrated, remoteConfig, onboarding, user } = this.props
 
-    if (!rehydrated || !remoteConfig) {
-      return <View />
+    if (!rehydrated || !remoteConfig || !user) {
+      return <View style={{ flex: 1, backgroundColor: 'white' }} />
     } else if (!onboarding.completed) {
-      return <RootNavigator />
+      return <OnboardingNavigator />
     }
 
     return <NewsListStackNavigator />
