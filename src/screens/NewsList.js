@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, FlatList, TouchableOpacity, Platform, Image, View, RefreshControl, ActivityIndicator } from 'react-native'
 import { NavigationActions } from 'react-navigation'
-import { RkCard, RkStyleSheet, RkText } from 'react-native-ui-kitten'
+import { RkCard, RkButton, RkStyleSheet, RkText } from 'react-native-ui-kitten'
 import { truncate } from 'underscore.string'
 import { setUser, setPosts } from '../actions'
 import { connect } from 'react-redux'
@@ -67,6 +67,12 @@ const limit = 10
   },
 })
 export default class NewsList extends React.Component {
+  static navigationOptions = {
+    headerRight: (
+      <RkButton rkType='clear link' onPress={() => alert('This is a button!')} color="#fff">I</RkButton>
+    ),
+  }
+
   constructor() {
     super()
 

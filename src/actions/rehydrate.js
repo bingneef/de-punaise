@@ -5,7 +5,6 @@ export const setHydrated = (rehydratedState = {}) => {
     let obj = {
       ...state,
       rehydrated: true,
-      posts: state.posts,
     }
 
     const items = ['user', 'remoteConfig', 'onboarding', 'navigation']

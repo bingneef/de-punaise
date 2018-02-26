@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import { StyleSheet } from 'react-native'
 import AppIntroSlider from 'react-native-app-intro-slider'
 import { connect } from 'react-redux'
 import firebase from 'react-native-firebase'
 import { setOnboarding } from '../actions'
 import Default from '../components/Onboarding/Default'
+import { requestNotifications } from '../services/notifications'
+
 const styles = StyleSheet.create({
   image: {
     width: 320,
@@ -14,7 +16,7 @@ const styles = StyleSheet.create({
 
 const slides = [
   {
-    key: 'first',
+    key: 'intro',
     fatTitle: 'De Punaise',
     text: 'Voor al je nieuws en onzin\nover Ariston \'80',
     image: require('../../assets/onboarding/news-report.png'),
@@ -22,17 +24,17 @@ const slides = [
     backgroundColor: '#3949AB',
   },
   {
-    key: 'second',
+    key: 'tip',
     fatTitle: 'Eigen ideëen?',
-    text: 'Straks kan je zelf\nde redactie tippen!',
+    text: 'Tip de redactie met je eigen verhalen',
     image: require('../../assets/onboarding/idea.png'),
     imageStyle: styles.image,
     backgroundColor: '#F44336',
   },
   {
-    key: 'third',
-    fatTitle: 'Meer features',
-    text: 'Er komen meer features aan,\ndus hou de app in de gaten!',
+    key: 'push',
+    fatTitle: 'Push Notificaties',
+    text: 'Blijf altijd op de hoogte\nvan het laatste nieuws!',
     image: require('../../assets/onboarding/football.png'),
     imageStyle: styles.image,
     backgroundColor: '#757575',
@@ -40,18 +42,15 @@ const slides = [
 ]
 
 @connect()
-export default class App extends React.Component {
-  static navigationOptions = {
-    header: null,
-  }
-
+export default class App extends PureComponent {
   constructor(props) {
     super(props)
 
     this.onDone = this._onDone.bind(this)
   }
 
-  _onDone = () => {
+  async _onDone () {
+    await requestNotifications()
     firebase.analytics().logEvent('onboarding', {completed: true})
     this.props.dispatch(setOnboarding({completed: true}))
   }
@@ -65,6 +64,10 @@ export default class App extends React.Component {
       <AppIntroSlider
         slides={slides}
         renderItem={this.renderItem}
+        showPrevButton={true}
+        doneLabel='Beginnen'
+        nextLabel='Volgende'
+        prevLabel='Vorige'
         onDone={this.onDone}
       />
     )
