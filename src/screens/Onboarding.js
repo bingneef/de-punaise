@@ -35,7 +35,7 @@ const slides = [
     key: 'push',
     fatTitle: 'Push Notificaties',
     text: 'Blijf altijd op de hoogte\nvan het laatste nieuws!',
-    image: require('../../assets/onboarding/football.png'),
+    image: require('../../assets/onboarding/send.png'),
     imageStyle: styles.image,
     backgroundColor: '#757575',
   }
@@ -68,7 +68,7 @@ export default class App extends PureComponent {
           slides={slides}
           renderItem={this.renderItem}
           showPrevButton={true}
-          doneLabel='Beginnen'
+          doneLabel='Ok!'
           nextLabel='Volgende'
           prevLabel='Vorige'
           onDone={this.onDone}
