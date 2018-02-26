@@ -24,9 +24,9 @@ platform :ios do
   lane :beta do
     build
     pilot
-    refresh_dsyms
     commit_version_bump(message: 'Bump build', xcodeproj: './ios/DePunaise.xcodeproj')
     push_to_git_remote
+    refresh_dsyms
   end
 
   lane :refresh_dsyms do
