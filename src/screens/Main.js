@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View, StatusBar } from 'react-native'
+import { View } from 'react-native'
 import { withNavigation } from 'react-navigation'
+import SplashScreen from 'react-native-splash-screen'
 
-import { OnboardingNavigator, NewsListStackNavigator } from '../navigation/MainNavigator'
+import { setupNotifications } from '../services/notifications'
 import { rehydrate, fetchRemoteConfig, anonymousLogin } from '../actions'
 
 @connect(state => ({
@@ -19,24 +20,21 @@ class Main extends Component {
     await this.props.dispatch(fetchRemoteConfig())
     await this.props.dispatch(anonymousLogin())
 
-    console.warn(this.props.navigation)
+    setupNotifications(this.props.navigation)
+
+    const { onboarding } = this.props
+
+    if (!onboarding.completed) {
+      this.props.navigation.replace('Onboarding')
+    } else {
+      this.props.navigation.replace('NewsList')
+    }
+
+    SplashScreen.hide()
   }
 
   render () {
-    const { rehydrated, remoteConfig, onboarding, user } = this.props
-
-    if (!rehydrated || !remoteConfig || !user) {
-      return <View style={{ flex: 1, backgroundColor: 'white' }} />
-    } else if (!onboarding.completed) {
-      return (
-        <View style={{flex: 1}}>
-          <StatusBar barStyle="light-content"/>
-          <OnboardingNavigator />
-        </View>
-      )
-    }
-
-    return <NewsListStackNavigator />
+    return <View style={{ flex: 1, backgroundColor: 'white' }} />
   }
 }
 

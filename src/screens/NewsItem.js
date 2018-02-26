@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { ScrollView, Dimensions, StyleSheet, Platform, Image, View, TouchableOpacity, ActivityIndicator, StatusBar } from 'react-native'
 import {
   RkCard,
@@ -10,6 +10,9 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import moment from 'moment'
 import firebase from 'react-native-firebase'
+import { Modal, Button } from 'react-native'
+import ImageViewer from 'react-native-image-zoom-viewer'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 @graphql(gql`
   query($postId: String!) {
@@ -18,6 +21,9 @@ import firebase from 'react-native-firebase'
       content
       pubDateTimestamp
       image:imageSized(size: "detail") {
+        url
+      }
+      detailImage:imageSized(size: "super-detail") {
         url
       }
     },
@@ -32,21 +38,32 @@ import firebase from 'react-native-firebase'
     }
   },
 })
-
-export default class NewsItem extends React.Component {
-
+export default class NewsItem extends Component {
   constructor() {
     super()
 
-    this._close = this._close.bind(this)
+    this.openImageView = this._openImageView.bind(this)
+    this.closeImageView = this._closeImageView.bind(this)
+
+    this.state = {
+      showImageViewer: false,
+    }
+  }
+
+  _openImageView () {
+    this.setState({
+      showImageViewer: true,
+    })
+  }
+
+  _closeImageView () {
+    this.setState({
+      showImageViewer: false,
+    })
   }
 
   componentDidMount() {
     firebase.analytics().logEvent('post_view', {id: this.props.navigation.state.params.id})
-  }
-
-  _close () {
-    this.props.navigation.goBack()
   }
 
   render() {
@@ -63,11 +80,18 @@ export default class NewsItem extends React.Component {
     }
 
     const { post } = this.props.data
+    const { showImageViewer } = this.state
 
     return (
       <ScrollView style={styles.root}>
+        <Modal visible={this.state.showImageViewer} transparent={true}>
+          <ImageViewer imageUrls={[{url: post.detailImage.url}]} renderIndicator={() => null} />
+          <Icon style={styles.navIcon} name="md-close-circle" size={40} onPress={this.closeImageView} />
+        </Modal>
         <RkCard rkType='article'>
-          <Image rkCardImg source={{uri: post.image.url}} />
+          <TouchableOpacity onPress={this.openImageView}>
+            <Image rkCardImg source={{uri: post.image.url}} />
+          </TouchableOpacity>
           <View rkCardHeader>
             <View>
               <RkText style={styles.title} rkType='header4'>{post.title}</RkText>
@@ -96,4 +120,10 @@ const styles = RkStyleSheet.create(theme => ({
   title: {
     marginBottom: 5
   },
-}));
+  navIcon: {
+    position: 'absolute',
+    top: 24,
+    right: 12,
+    color: 'white',
+  },
+}))

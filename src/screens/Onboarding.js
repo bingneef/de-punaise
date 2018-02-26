@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { StyleSheet } from 'react-native'
+import { View, StyleSheet, StatusBar } from 'react-native'
 import AppIntroSlider from 'react-native-app-intro-slider'
 import { connect } from 'react-redux'
 import firebase from 'react-native-firebase'
@@ -53,6 +53,7 @@ export default class App extends PureComponent {
     await requestNotifications()
     firebase.analytics().logEvent('onboarding', {completed: true})
     this.props.dispatch(setOnboarding({completed: true}))
+    this.props.navigation.replace('NewsList')
   }
 
   renderItem (props) {
@@ -61,15 +62,18 @@ export default class App extends PureComponent {
 
   render() {
     return (
-      <AppIntroSlider
-        slides={slides}
-        renderItem={this.renderItem}
-        showPrevButton={true}
-        doneLabel='Beginnen'
-        nextLabel='Volgende'
-        prevLabel='Vorige'
-        onDone={this.onDone}
-      />
+      <View style={{flex: 1}}>
+        <StatusBar barStyle='light-content' />
+        <AppIntroSlider
+          slides={slides}
+          renderItem={this.renderItem}
+          showPrevButton={true}
+          doneLabel='Beginnen'
+          nextLabel='Volgende'
+          prevLabel='Vorige'
+          onDone={this.onDone}
+        />
+      </View>
     )
   }
 }

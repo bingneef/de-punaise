@@ -6,50 +6,37 @@ import NewsItem from '../screens/NewsItem'
 import Onboarding from '../screens/Onboarding'
 import Main from '../screens/Main'
 
+const newsListStackNavOptions = {
+  title: 'DePunaise',
+  headerMode: 'none',
+  headerTintColor: '#181818',
+  headerStyle: { backgroundColor: 'white' },
+}
+
 export default StackNavigator(
   {
     Main: {
       screen: Main,
+      navigationOptions: {
+        header: null,
+      }
     },
-  },
-  {
-    navigationOptions: {
-      header: null,
-    }
-  }
-)
-
-export const OnboardingNavigator = StackNavigator(
-  {
     Onboarding: {
       screen: Onboarding,
+      navigationOptions: {
+        header: null,
+      }
     },
-  },
-  {
-    navigationOptions: {
-      header: null,
-    }
-  }
-)
-
-export const NewsListStackNavigator = StackNavigator(
-  {
     NewsList: {
       screen: NewsList,
       navigationOptions: {
+        ...newsListStackNavOptions,
         headerBackTitle: null,
      }
     },
     NewsItem: {
       screen: NewsItem,
+      navigationOptions: newsListStackNavOptions,
     },
   },
-  {
-    navigationOptions: {
-      title: 'DePunaise',
-      headerMode: 'none',
-      headerTintColor: '#181818',
-      headerStyle: { backgroundColor: 'white' },
-    }
-  }
 )

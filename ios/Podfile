@@ -26,4 +26,8 @@ target 'DePunaise' do
   pod 'Crashlytics', '~> 3.9.3'
   pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+  pod 'react-native-mail', :path => '../node_modules/react-native-mail'
+
 end

@@ -8,11 +8,9 @@ import { ApolloProvider } from 'react-apollo'
 import { withRkTheme } from 'react-native-ui-kitten';
 
 import { bootstrap } from './src/config/bootstrap';
-import { setupNotifications } from './src/services/notifications'
 import { client } from './src/services/graphql/interface'
 
 import ErrorBoundary from './src/screens/ErrorBoundary'
-import SplashScreen from 'react-native-splash-screen'
 
 import './config/ReactotronConfig'
 
@@ -21,11 +19,6 @@ bootstrap()
 class App extends React.Component {
   constructor() {
     super()
-  }
-
-  componentDidMount() {
-    SplashScreen.hide()
-    setupNotifications()
   }
 
   render () {

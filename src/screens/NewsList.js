@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, FlatList, TouchableOpacity, Platform, Image, View, RefreshControl, ActivityIndicator } from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { NavigationActions } from 'react-navigation'
 import { RkCard, RkButton, RkStyleSheet, RkText } from 'react-native-ui-kitten'
 import { truncate } from 'underscore.string'
@@ -9,9 +10,44 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import moment from 'moment'
 import firebase from 'react-native-firebase'
+import handleSuggestionMail from '../helpers/mail/handleSuggestionMail'
+
+const styles = RkStyleSheet.create(theme => ({
+  root: {
+    backgroundColor: theme.colors.screen.base,
+    flex: 1,
+  },
+  navIcon: {
+    color: theme.colors.text.base,
+    padding: 12,
+  },
+  container: {
+    paddingBottom: 48,
+  },
+  header: {
+    justifyContent: 'flex-end',
+    paddingHorizontal: 0,
+  },
+  image: {
+    borderRadius: 4,
+  },
+  card: {
+    paddingHorizontal: 16,
+    borderTopWidth: 0,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: '#CECECE',
+    borderRadius: 0,
+  },
+  footer: {
+    paddingTop: 16,
+    paddingHorizontal: 0,
+  },
+  time: {
+    marginTop: 5
+  }
+}))
 
 const limit = 10
-
 @graphql(gql`
   fragment postInfo on Post {
     id
@@ -69,7 +105,9 @@ const limit = 10
 export default class NewsList extends React.Component {
   static navigationOptions = {
     headerRight: (
-      <RkButton rkType='clear link' onPress={() => alert('This is a button!')} color="#fff">I</RkButton>
+      <RkButton rkType='clear link' onPress={ handleSuggestionMail } color="#fff">
+        <Icon style={styles.navIcon} name="lightbulb-on-outline" size={30} />
+      </RkButton>
     ),
   }
 
@@ -165,34 +203,3 @@ export default class NewsList extends React.Component {
     )
   }
 }
-
-const styles = RkStyleSheet.create(theme => ({
-  root: {
-    backgroundColor: theme.colors.screen.base,
-    flex: 1,
-  },
-  container: {
-    paddingBottom: 48,
-  },
-  header: {
-    justifyContent: 'flex-end',
-    paddingHorizontal: 0,
-  },
-  image: {
-    borderRadius: 4,
-  },
-  card: {
-    paddingHorizontal: 16,
-    borderTopWidth: 0,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: '#CECECE',
-    borderRadius: 0,
-  },
-  footer: {
-    paddingTop: 16,
-    paddingHorizontal: 0,
-  },
-  time: {
-    marginTop: 5
-  }
-}))
