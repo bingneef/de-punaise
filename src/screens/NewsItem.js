@@ -14,6 +14,8 @@ import { Modal, Button } from 'react-native'
 import ImageViewer from 'react-native-image-zoom-viewer'
 import Icon from 'react-native-vector-icons/Ionicons'
 
+import NetworkError from '../components/NetworkError'
+
 @graphql(gql`
   query($postId: String!) {
     post:postById(postId: $postId) {
@@ -35,6 +37,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
         postId: props.navigation.state.params.id,
       },
       fetchPolicy: 'cache-and-network',
+      errorPolicy: 'none',
     }
   },
 })
@@ -79,6 +82,10 @@ export default class NewsItem extends Component {
       )
     }
 
+    if (this.props.data.error || !this.props.data.post) {
+      return <NetworkError />
+    }
+
     const { post } = this.props.data
     const { showImageViewer } = this.state
 
@@ -98,10 +105,10 @@ export default class NewsItem extends Component {
               <RkText rkType='secondary2 hintColor'>{moment(post.pubDateTimestamp).fromNow()}</RkText>
             </View>
           </View>
-          <View rkCardContent>
+          <View rkCardContent style={styles.content}>
             <View>
               { post.content.map((item, index) => (
-                <RkText key={index} rkType='primary3 bigLine'>{item}</RkText>
+                <RkText key={index} rkType='primary3 bigLine' style={styles.paragraph}>{item}</RkText>
               ))}
             </View>
           </View>
@@ -115,10 +122,15 @@ const styles = RkStyleSheet.create(theme => ({
   root: {
     backgroundColor: theme.colors.screen.base,
     flex: 1,
+  },
+  content: {
     borderBottomWidth: 0,
   },
   title: {
     marginBottom: 5
+  },
+  paragraph: {
+    marginBottom: 5,
   },
   navIcon: {
     position: 'absolute',

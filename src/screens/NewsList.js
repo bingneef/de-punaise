@@ -10,7 +10,9 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import moment from 'moment'
 import firebase from 'react-native-firebase'
+
 import handleSuggestionMail from '../helpers/mail/handleSuggestionMail'
+import NetworkError from '../components/NetworkError'
 
 const styles = RkStyleSheet.create(theme => ({
   root: {
@@ -49,16 +51,13 @@ const styles = RkStyleSheet.create(theme => ({
 
 const limit = 10
 @graphql(gql`
-  fragment postInfo on Post {
-    id
-    title
-    excerpt(size: 100)
-    pubDateTimestamp
-  }
   query($cursor: Int) {
     posts(cursor: $cursor, limit: ${limit}) {
       feed {
-        ...postInfo
+        id
+        title
+        excerpt(size: 100)
+        pubDateTimestamp
         image:imageSized {
           url
         }
@@ -73,6 +72,7 @@ const limit = 10
         cursor: 0,
       },
       fetchPolicy: 'cache-and-network',
+      errorPolicy: 'none',
     }
   },
   props({ data: { loading, posts, fetchMore, refetch } }) {
@@ -180,6 +180,10 @@ export default class NewsList extends React.Component {
       return (
         <View style={styles.root} />
       )
+    }
+
+    if (this.props.error || !this.props.posts) {
+      return <NetworkError />
     }
 
     const { feed } = this.props.posts
