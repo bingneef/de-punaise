@@ -37,5 +37,35 @@ platform :ios do
 end
 
 platform :android do
-  # Android Lanes
+  def increment_version_code(gradle_build: 'android/app/build.gradle')
+    sh %Q{cd ../ && echo "$(awk '{sub(/versionCode [[:digit:]]+$/,"versionCode "$2+1)}1' #{gradle_build})" > #{gradle_build} && cd -}
+  end
+
+  desc 'Build the Android application.'
+  private_lane :build do
+    pass = prompt(
+      text: "Sign Pass: "
+    )
+
+    increment_version_code gradle_build: './android/app/build.gradle'
+    gradle( task: 'clean', project_dir: './android' )
+    gradle( task: 'assemble', build_type: 'Release', project_dir: './android', properties: {
+      'android.injected.signing.store.file' => './android/app/keys',
+      'android.injected.signing.store.password' => pass,
+      'android.injected.signing.key.alias' => 'key',
+      'android.injected.signing.key.password' => pass
+    })
+  end
+
+  desc 'Ship to alpha'
+  lane :alpha do
+    build
+    upload_to_play_store(track: 'alpha')
+  end
+
+  desc 'Ship to beta'
+  lane :beta do
+    build
+    upload_to_play_store(track: 'beta')
+  end
 end
