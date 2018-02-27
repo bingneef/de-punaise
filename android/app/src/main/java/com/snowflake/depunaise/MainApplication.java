@@ -6,7 +6,6 @@ import com.facebook.react.ReactApplication;
 import com.chirag.RNMail.RNMail;
 import com.oblador.vectoricons.VectorIconsPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
-import io.sentry.RNSentryPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -41,10 +40,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
         new MainReactPackage(),
-            new RNMail(),
-            new VectorIconsPackage(),
-            new SplashScreenReactPackage(),
-            new RNSentryPackage(MainApplication.this),
+        new RNMail(),
+        new VectorIconsPackage(),
+        new SplashScreenReactPackage(),
         new RNFirebasePackage(),
         // add/remove these packages as appropriate
         new RNFirebaseAdMobPackage(),
@@ -60,7 +58,7 @@ public class MainApplication extends Application implements ReactApplication {
         new RNFirebaseCrashlyticsPackage()
       );
     }
-    
+
     @Override
     protected String getJSMainModuleName() {
       return "index";

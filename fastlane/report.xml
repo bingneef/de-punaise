@@ -5,7 +5,87 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: Verifying fastlane version" time="0.027341">
+      <testcase classname="fastlane.lanes" name="00: Verifying fastlane version" time="0.035494">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="01: ensure_git_branch" time="0.01621">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="02: ensure_git_status_clean" time="0.020701">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="03: git_pull" time="1.155797">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="04: Switch to ios build lane" time="0.00462">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="05: Switch to ios certificates lane" time="0.003255">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="06: match" time="7.473488">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="07: match" time="7.170407">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="08: increment_build_number" time="3.16364">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="09: gym" time="274.545963">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="10: pilot" time="784.77521">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="11: commit_version_bump" time="0.170709">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="12: push_to_git_remote" time="2.794961">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="13: Switch to ios refresh_dsyms lane" time="0.003734">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="14: download_dsyms" time="17.220051">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="15: upload_symbols_to_crashlytics" time="55.397696">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="16: clean_build_artifacts" time="0.030843">
         
       </testcase>
     

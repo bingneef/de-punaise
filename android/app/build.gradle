@@ -78,7 +78,6 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
-apply from: "../../node_modules/react-native-sentry/sentry.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -152,7 +151,6 @@ dependencies {
     compile project(':react-native-mail')
     compile project(':react-native-vector-icons')
     compile project(':react-native-splash-screen')
-    compile project(':react-native-sentry')
     compile(project(':react-native-firebase')) {
         transitive = false
     }
@@ -171,7 +169,7 @@ dependencies {
     compile "com.google.firebase:firebase-messaging:11.8.0"
     compile "com.google.firebase:firebase-perf:11.8.0"
     compile "com.google.firebase:firebase-storage:11.8.0"
-    
+
     compile('com.crashlytics.sdk.android:crashlytics:2.7.1@aar') {
         transitive = true
     }
