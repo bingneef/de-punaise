@@ -51,7 +51,6 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/google-play-android-developer.json
-fastlane/metadata
 
 # IOS Build files
 #
