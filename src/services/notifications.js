@@ -3,6 +3,10 @@ import { NavigationActions } from 'react-navigation';
 
 
 const handleMessage = (navigation, args) => {
+  if (!args.postId) {
+    return
+  }
+
   navigation.replace('NewsList')
   navigation.navigate('NewsItem', { id: args.postId })
 }

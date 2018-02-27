@@ -6,20 +6,13 @@ import {RkTheme} from 'react-native-ui-kitten'
 import {KittenTheme} from './theme'
 import moment from 'moment'
 import nl from 'moment/locale/nl'
-moment.locale('nl')
-// import {AvatarTypes} from '../components/avatar/types'
-// import {GradientButtonTypes} from '../components/gradientButton/types'
-// import {SwitchTypes} from '../components/switch/types'
-// import {SocialBarTypes} from '../components/socialBar/types'
 import {scale, scaleModerate, scaleVertical} from '../utils/scale'
+
+moment.locale('nl')
 
 export const bootstrap = () => {
 
   RkTheme.setTheme(KittenTheme, null)
-
-  /*
-   RkText types
-   */
 
   RkTheme.setType('RkText', 'basic', {
     fontFamily: theme => theme.fonts.family.bold,
@@ -484,15 +477,6 @@ export const bootstrap = () => {
     highlightBorderBottomColor: theme => theme.colors.border.highlight,
     windowBorderColor: theme => theme.colors.border.highlight,
   })
-
-  /*
-   Register components
-   */
-
-  // RkTheme.registerComponent('Avatar', AvatarTypes)
-  // RkTheme.registerComponent('GradientButton', GradientButtonTypes)
-  // RkTheme.registerComponent('RkSwitch', SwitchTypes)
-  // RkTheme.registerComponent('SocialBar', SocialBarTypes)
 
   StatusBar.setBarStyle('dark-content', true)
 }

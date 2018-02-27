@@ -13,7 +13,7 @@ const newsListStackNavOptions = {
   headerStyle: { backgroundColor: 'white' },
 }
 
-export default StackNavigator(
+const MainNavigator = StackNavigator(
   {
     Main: {
       screen: Main,
@@ -39,4 +39,9 @@ export default StackNavigator(
       navigationOptions: newsListStackNavOptions,
     },
   },
+  {
+    initialRouteName: 'Main',
+  }
 )
+
+export default MainNavigator

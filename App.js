@@ -1,15 +1,14 @@
 import React from 'react'
 import { View, StatusBar } from 'react-native'
 import { Provider } from 'react-redux'
-import MainNavigator from './src/navigation/MainNavigator'
-import store from './src/store'
 import { SafeAreaView } from 'react-navigation'
 import { ApolloProvider } from 'react-apollo'
-import { withRkTheme } from 'react-native-ui-kitten';
+import { withRkTheme } from 'react-native-ui-kitten'
 
-import { bootstrap } from './src/config/bootstrap';
+import MainNavigator from './src/navigation/MainNavigator'
+import store from './src/store'
+import { bootstrap } from './src/config/bootstrap'
 import { client } from './src/services/graphql/interface'
-
 import ErrorBoundary from './src/screens/ErrorBoundary'
 
 import './config/ReactotronConfig'
