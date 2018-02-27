@@ -55,6 +55,8 @@ platform :android do
       'android.injected.signing.key.alias' => 'key',
       'android.injected.signing.key.password' => pass
     })
+    commit_android_version_bump( gradle_file_folder: './android' )
+    push_to_git_remote
   end
 
   desc 'Ship to alpha'
