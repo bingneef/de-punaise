@@ -50,7 +50,7 @@ const styles = RkStyleSheet.create(theme => ({
   }
 }))
 
-const limit = 4
+const limit = 10
 @graphql(gql`
   query($cursor: Int) {
     posts(cursor: $cursor, limit: ${limit}) {
@@ -129,12 +129,18 @@ export default class NewsList extends React.Component {
     this.state = {
       refreshing: false,
       loadingMore: false,
+      showLoader: false,
       appState: AppState.currentState,
     }
   }
 
   componentDidMount() {
     AppState.addEventListener('change', this.handleAppStateChange)
+
+    // Show the loader only after a second
+    setTimeout(() => {
+      this.setState({showLoader: true})
+    }, 1000)
   }
 
   componentWillUnmount() {
@@ -166,7 +172,7 @@ export default class NewsList extends React.Component {
           <View style={styles.footer} rkCardFooter>
             <View style={{paddingHorizontal: 0}}>
               <RkText style={{paddingHorizontal: 0}} rkType='header2'>{item.title}</RkText>
-              <RkText rkType='primary3 mediumLine' numberOfLines={2}>{item.excerpt}</RkText>
+              <RkText rkType='primary3' numberOfLines={2}>{item.excerpt}</RkText>
             </View>
           </View>
         </RkCard>
@@ -205,7 +211,9 @@ export default class NewsList extends React.Component {
   render() {
     if (this.props.loading && (!this.props.posts || this.props.posts.length == 0)){
       return (
-        <View style={styles.root} />
+        <View style={styles.root}>
+          { this.state.showLoader && (<ActivityIndicator size="large" style={styles.footerComponent} />) }
+        </View>
       )
     }
 
