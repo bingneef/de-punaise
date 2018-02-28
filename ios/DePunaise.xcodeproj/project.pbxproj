@@ -50,6 +50,7 @@
 		BC67B2FB5E5E411DABD68F22 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F0738B0D95674B3A93BE2F2D /* Octicons.ttf */; };
 		C6162C5E2044322000EB72BD /* libRNMail.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6162C5A2044321100EB72BD /* libRNMail.a */; };
 		C692AA5F203F7CCA00D81FC8 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C692AA5E203F7CCA00D81FC8 /* Launch Screen.storyboard */; };
+		C6B3D5E0204697480047768E /* libReact Native Open Settings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B3D5DF204697260047768E /* libReact Native Open Settings.a */; };
 		C6EE2D6D203F7B3F006C06C6 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6EE2D6C203F7B1E006C06C6 /* libSplashScreen.a */; };
 		C6FCB31C203E25D500327CF0 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		CB8C77B7A8D14EE2ADBE59A3 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DC1283C33BCA4D9BA093BEFE /* EvilIcons.ttf */; };
@@ -351,6 +352,13 @@
 			remoteGlobalIDString = 46FEDE8A1AFF192F00D3261C;
 			remoteInfo = RNMailTests;
 		};
+		C6B3D5DE204697260047768E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6B3D5DA204697260047768E /* React Native Open Settings.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 190C8BAA1BEAADCC00CD505E;
+			remoteInfo = "React Native Open Settings";
+		};
 		C6EE2D6B203F7B1E006C06C6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C6EE2D67203F7B1D006C06C6 /* SplashScreen.xcodeproj */;
@@ -400,6 +408,7 @@
 		BD6DD77019C84604931D69A4 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		C6162C2E2044321100EB72BD /* RNMail.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNMail.xcodeproj; path = "../node_modules/react-native-mail/RNMail.xcodeproj"; sourceTree = "<group>"; };
 		C692AA5E203F7CCA00D81FC8 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		C6B3D5DA204697260047768E /* React Native Open Settings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "React Native Open Settings.xcodeproj"; path = "../node_modules/react-native-open-settings/React Native Open Settings.xcodeproj"; sourceTree = "<group>"; };
 		C6E14BCF203E19BD004D59AF /* DePunaise.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = DePunaise.entitlements; path = DePunaise/DePunaise.entitlements; sourceTree = "<group>"; };
 		C6EE2D67203F7B1D006C06C6 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		DB755D0EEF404CEC8AE4D391 /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -422,6 +431,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6B3D5E0204697480047768E /* libReact Native Open Settings.a in Frameworks */,
 				C6162C5E2044322000EB72BD /* libRNMail.a in Frameworks */,
 				C6EE2D6D203F7B3F006C06C6 /* libSplashScreen.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
@@ -632,6 +642,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				C6B3D5DA204697260047768E /* React Native Open Settings.xcodeproj */,
 				C6162C2E2044321100EB72BD /* RNMail.xcodeproj */,
 				C6EE2D67203F7B1D006C06C6 /* SplashScreen.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
@@ -728,6 +739,14 @@
 			children = (
 				C6162C5A2044321100EB72BD /* libRNMail.a */,
 				C6162C5C2044321100EB72BD /* RNMailTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6B3D5DB204697260047768E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C6B3D5DF204697260047768E /* libReact Native Open Settings.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -911,6 +930,10 @@
 				{
 					ProductGroup = 139FDEE71B06529A00C62182 /* Products */;
 					ProjectRef = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
+				},
+				{
+					ProductGroup = C6B3D5DB204697260047768E /* Products */;
+					ProjectRef = C6B3D5DA204697260047768E /* React Native Open Settings.xcodeproj */;
 				},
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
@@ -1218,6 +1241,13 @@
 			fileType = wrapper.cfbundle;
 			path = RNMailTests.xctest;
 			remoteRef = C6162C5B2044321100EB72BD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C6B3D5DF204697260047768E /* libReact Native Open Settings.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libReact Native Open Settings.a";
+			remoteRef = C6B3D5DE204697260047768E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		C6EE2D6C203F7B1E006C06C6 /* libSplashScreen.a */ = {

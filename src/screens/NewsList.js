@@ -10,6 +10,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import moment from 'moment'
 import firebase from 'react-native-firebase'
+import OpenSettings from 'react-native-open-settings'
 
 import handleSuggestionMail from '../helpers/mail/handleSuggestionMail'
 import NetworkError from '../components/NetworkError'
@@ -104,11 +105,16 @@ const limit = 10
 })
 export default class NewsList extends React.Component {
   static navigationOptions = {
-    headerRight: (
+    headerLeft: (
       <RkButton rkType='clear link' onPress={ handleSuggestionMail } color="#fff">
         <Icon style={styles.navIcon} name="lightbulb-on-outline" size={30} />
       </RkButton>
     ),
+    headerRight: (
+      <RkButton rkType='clear link' onPress={ () => OpenSettings.openSettings() } color="#fff">
+        <Icon style={styles.navIcon} name="settings" size={30} />
+      </RkButton>
+    )
   }
 
   constructor() {

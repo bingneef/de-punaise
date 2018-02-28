@@ -4031,6 +4031,10 @@ react-native-mail@^3.0.5:
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/react-native-mail/-/react-native-mail-3.0.5.tgz#e497cb192a52102458f5e2a554dfc65d3fb635cb"
 
+react-native-open-settings@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-open-settings/-/react-native-open-settings-1.0.1.tgz#1c0ae3d25fd3fd6de94b6d538333d47245cc5a0c"
+
 react-native-parallax-scroll-view@^0.20.1:
   version "0.20.1"
   resolved "https://registry.yarnpkg.com/react-native-parallax-scroll-view/-/react-native-parallax-scroll-view-0.20.1.tgz#7fad3411df8632b7c99fed5d0a5c0a8f97007b38"

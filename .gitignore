@@ -51,6 +51,7 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/google-play-android-developer.json
+ios/firebase-crashreporting.json
 
 # IOS Build files
 #
