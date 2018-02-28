@@ -101,7 +101,7 @@ export default class NewsItem extends Component {
           </TouchableOpacity>
           <View rkCardHeader>
             <View>
-              <RkText style={styles.title} rkType='header4'>{post.title}</RkText>
+              <RkText style={styles.title} rkType='header2'>{post.title}</RkText>
               <RkText rkType='secondary2 hintColor'>{moment(post.pubDateTimestamp).fromNow()}</RkText>
             </View>
           </View>

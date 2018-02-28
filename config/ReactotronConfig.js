@@ -6,14 +6,15 @@ import Reactotron, {
   networking
 } from 'reactotron-react-native'
 
-Reactotron
-  .configure({
-    name: 'React Native Demo'
-  })
-  .use(trackGlobalErrors())
-  .use(openInEditor())
-  .use(overlay())
-  .use(asyncStorage())
-  .use(networking())
-  .connect()
-
+if (__DEV__) {
+  Reactotron
+    .configure({
+      name: 'React Native Demo'
+    })
+    .use(trackGlobalErrors())
+    .use(openInEditor())
+    .use(overlay())
+    .use(asyncStorage())
+    .use(networking())
+    .connect()
+}
