@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, FlatList, TouchableOpacity, Platform, Image, View, RefreshControl, ActivityIndicator } from 'react-native'
+import { StyleSheet, FlatList, TouchableOpacity, Platform, Image, View, RefreshControl, ActivityIndicator, AppState } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { NavigationActions } from 'react-navigation'
 import { RkCard, RkButton, RkStyleSheet, RkText } from 'react-native-ui-kitten'
@@ -45,12 +45,12 @@ const styles = RkStyleSheet.create(theme => ({
     paddingTop: 16,
     paddingHorizontal: 0,
   },
-  time: {
-    marginTop: 5
+  footerComponent: {
+    marginTop: 12,
   }
 }))
 
-const limit = 10
+const limit = 4
 @graphql(gql`
   query($cursor: Int) {
     posts(cursor: $cursor, limit: ${limit}) {
@@ -117,18 +117,38 @@ export default class NewsList extends React.Component {
     )
   }
 
+
   constructor() {
     super()
 
     this.renderItem = this._renderItem.bind(this)
-    this.onRefresh = this._onRefresh.bind(this)
+    this.refresh = this._refresh.bind(this)
     this.loadMore = this._loadMore.bind(this)
+    this.handleAppStateChange = this._handleAppStateChange.bind(this)
 
     this.state = {
       refreshing: false,
       loadingMore: false,
+      appState: AppState.currentState,
     }
   }
+
+  componentDidMount() {
+    AppState.addEventListener('change', this.handleAppStateChange)
+  }
+
+  componentWillUnmount() {
+    AppState.removeEventListener('change', this.handleAppStateChange);
+  }
+
+  _handleAppStateChange (nextAppState) {
+    if (this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
+      this.refresh()
+    }
+
+    this.setState({appState: nextAppState});
+  }
+
 
   _renderItem({item}) {
     return (
@@ -158,10 +178,11 @@ export default class NewsList extends React.Component {
     return item.id
   }
 
-  async _onRefresh () {
+  async _refresh () {
     if (this.state.refreshing) {
       return
     }
+
     this.setState({refreshing: true})
     await this.props.refetch({cursor: 0})
     this.setState({refreshing: false})
@@ -182,7 +203,7 @@ export default class NewsList extends React.Component {
   }
 
   render() {
-    if (this.props.loading && (!this.state.loadingMore && !this.state.refreshing)) {
+    if (this.props.loading && (!this.props.posts || this.props.posts.length == 0)){
       return (
         <View style={styles.root} />
       )
@@ -195,21 +216,19 @@ export default class NewsList extends React.Component {
     const { feed } = this.props.posts
 
     return (
-      <FlatList
-        data={ feed }
-        renderItem={ this.renderItem }
-        keyExtractor={ this._keyExtractor }
-        style={ styles.root }
-        contentContainerStyle={styles.container}
-        scrollEventThrottle={ 200 }
-        onScroll={(e) => {
-          let paddingToBottom = 40
-          paddingToBottom += e.nativeEvent.layoutMeasurement.height;
-          if(e.nativeEvent.contentOffset.y >= e.nativeEvent.contentSize.height - paddingToBottom) {
-            this.loadMore()
-          }
-        }}
-        refreshControl={ <RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh}/>}  />
+      <View style={styles.root}>
+        <FlatList
+          data={ feed }
+          renderItem={ this.renderItem }
+          keyExtractor={ this._keyExtractor }
+          style={ styles.root }
+          contentContainerStyle={styles.container}
+          onEndReached={this.loadMore}
+          onEndReachedThreshold={ 0.2 }
+          refreshControl={ <RefreshControl refreshing={this.state.refreshing} onRefresh={this.refresh}/>}
+          ListFooterComponent={ this.state.loadingMore && (<ActivityIndicator size="large" style={styles.footerComponent} />) }  />
+
+      </View>
     )
   }
 }

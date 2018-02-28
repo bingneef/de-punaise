@@ -97,7 +97,7 @@ export default class NewsItem extends Component {
         </Modal>
         <RkCard rkType='article'>
           <TouchableOpacity onPress={this.openImageView}>
-            <Image rkCardImg source={{uri: post.image.url}} />
+            <Image rkCardImg source={{uri: post.image.url}} style={{height: Dimensions.get('window').width * 3 / 4}}/>
           </TouchableOpacity>
           <View rkCardHeader>
             <View>

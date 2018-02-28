@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Image } from 'react-native'
 import { RkText, RkStyleSheet } from 'react-native-ui-kitten'
 import firebase from 'react-native-firebase'
+import { Sentry } from 'react-native-sentry'
 
 export default class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -10,8 +11,9 @@ export default class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, info) {
-    firebase.fabric.crashlytics().recordError(500, info)
     this.setState({ hasError: true })
+    Sentry.captureException(error)
+
   }
 
   render() {
