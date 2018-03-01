@@ -31,20 +31,36 @@ export const bootstrap = () => {
     fontFamily: theme => theme.fonts.family.logo,
   })
 
-  RkTheme.setType('RkText', 'moon', {
-    fontFamily: 'icomoon',
+  RkTheme.setType('RkText', 'NavTitle', {
+    fontSize: theme => theme.fonts.sizes.navTitle,
+    fontFamily: theme => theme.fonts.family.navTitle,
   })
 
-  RkTheme.setType('RkText', 'awesome', {
-    fontFamily: 'fontawesome',
+  RkTheme.setType('RkText', 'ItemTitle', {
+    fontSize: theme => theme.fonts.sizes.itemTitle,
+    lineHeight: theme => theme.fonts.sizes.itemTitle * 0.95,
+    fontFamily: theme => theme.fonts.family.medium,
   })
 
-  RkTheme.setType('RkText', 'hero', {
-    fontSize: scale(33)
+  RkTheme.setType('RkText', 'ItemContent', {
+    fontSize: theme => theme.fonts.sizes.itemContent,
+    lineHeight: theme => theme.fonts.sizes.itemContent * 1.25,
+    fontFamily: theme => theme.fonts.family.regular,
   })
 
-  RkTheme.setType('RkText', 'menuIcon', {
-    fontSize: 44
+  RkTheme.setType('RkText', 'TimeAgo', {
+    fontSize: theme => theme.fonts.sizes.timeAgo,
+    fontFamily: theme => theme.fonts.family.light
+  })
+
+  RkTheme.setType('RkText', 'Title', {
+    fontSize: theme => theme.fonts.sizes.title,
+    fontFamily: theme => theme.fonts.family.medium
+  })
+
+  RkTheme.setType('RkText', 'SubTitle', {
+    fontSize: theme => theme.fonts.sizes.subTitle,
+    fontFamily: theme => theme.fonts.family.regular
   })
 
   //all font sizes
@@ -58,15 +74,6 @@ export const bootstrap = () => {
   for (let key in RkTheme.current.colors.text) {
     RkTheme.setType('RkText', `${key}Color`, {
       color: theme => theme.colors.text[key]
-    })
-  }
-
-  //all text line heights
-  for (let key in RkTheme.current.fonts.lineHeights) {
-    RkTheme.setType('RkText', `${key}Line`, {
-      text: {
-        lineHeight: theme => theme.fonts.lineHeights[key]
-      }
     })
   }
 

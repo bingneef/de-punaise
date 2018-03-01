@@ -46,7 +46,7 @@ const styles = RkStyleSheet.create(theme => ({
     paddingHorizontal: 0,
   },
   footerComponent: {
-    marginTop: 12,
+    marginVertical: 12,
   }
 }))
 
@@ -165,14 +165,14 @@ export default class NewsList extends React.Component {
         <RkCard rkType='blog' style={styles.card}>
           <View rkCardHeader style={styles.header}>
             <View>
-              <RkText rkType='secondary2'>{moment(item.pubDateTimestamp).fromNow()}</RkText>
+              <RkText rkType='TimeAgo'>{moment(item.pubDateTimestamp).fromNow()}</RkText>
             </View>
           </View>
           <Image rkCardImg source={{uri: item.image.url}} style={styles.image} />
           <View style={styles.footer} rkCardFooter>
             <View style={{paddingHorizontal: 0}}>
-              <RkText style={{paddingHorizontal: 0}} rkType='header2'>{item.title}</RkText>
-              <RkText rkType='primary3' numberOfLines={2}>{item.excerpt}</RkText>
+              <RkText style={{paddingHorizontal: 0}} rkType='ItemTitle'>{item.title}</RkText>
+              <RkText rkType='ItemContent' numberOfLines={2}>{item.excerpt}</RkText>
             </View>
           </View>
         </RkCard>

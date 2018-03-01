@@ -1,4 +1,5 @@
 import React from 'react'
+import { RkText } from 'react-native-ui-kitten'
 import { StackNavigator } from 'react-navigation'
 
 import NewsList from '../screens/NewsList'
@@ -7,7 +8,7 @@ import Onboarding from '../screens/Onboarding'
 import Main from '../screens/Main'
 
 const newsListStackNavOptions = {
-  title: 'DePunaise',
+  title: <RkText rkType='NavTitle'>DEPUNAISE</RkText>,
   headerMode: 'none',
   headerTintColor: '#181818',
   headerStyle: { backgroundColor: 'white' },

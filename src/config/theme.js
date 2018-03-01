@@ -67,12 +67,14 @@ const Colors = {
 
 const Fonts = {
   light: 'AppleSDGothicNeo-Light',
-  regular: 'AppleSDGothicNeo-Regular',
-  bold: 'AppleSDGothicNeo-SemiBold',
+  regular: 'HelveticaNeue',
+  medium: 'HelveticaNeue-Medium',
+  bold: 'HelveticaNeue-Bold',
   logo: 'AppleColorEmoji',
+  navTitle: 'American Typewriter',
 };
 
-const FontBaseValue = scale(18);
+const FontBaseValue = scale(16);
 
 export const KittenTheme = {
   name: 'light',
@@ -155,6 +157,12 @@ export const KittenTheme = {
   },
   fonts: {
     sizes: {
+      navTitle: FontBaseValue * 1.2,
+      itemTitle: FontBaseValue * 1.5,
+      itemContent: FontBaseValue,
+      timeAgo: FontBaseValue * 0.8,
+      title: FontBaseValue * 1.5,
+      subTitle: FontBaseValue * 0.8,
       h0: scale(32),
       h1: scale(26),
       h2: scale(24),
@@ -180,15 +188,13 @@ export const KittenTheme = {
       xlarge: FontBaseValue / 0.75,
       xxlarge: FontBaseValue * 1.6,
     },
-    lineHeights: {
-      medium: 18,
-      big: 24
-    },
     family: {
       regular: Fonts.regular,
       light: Fonts.light,
+      medium: Fonts.medium,
       bold: Fonts.bold,
-      logo: Fonts.logo
+      logo: Fonts.logo,
+      navTitle: Fonts.navTitle,
     }
   }
 };

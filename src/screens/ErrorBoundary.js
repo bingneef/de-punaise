@@ -21,8 +21,8 @@ export default class ErrorBoundary extends React.Component {
       return (
         <View style={styles.root}>
           <Image style={styles.image} source={require('../../assets/logo.png')} />
-          <RkText style={styles.title} rkType='header2'>Er is iets foutgegaan..</RkText>
-          <RkText rkType='secondary2 hintColor'>Sluit de applicatie af en probeer het opnieuw</RkText>
+          <RkText style={styles.title} rkType='Title'>Er is iets foutgegaan..</RkText>
+          <RkText rkType='SubTitle'>Sluit de applicatie af en probeer het opnieuw</RkText>
         </View>
       )
     }

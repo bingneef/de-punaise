@@ -101,14 +101,14 @@ export default class NewsItem extends Component {
           </TouchableOpacity>
           <View rkCardHeader>
             <View>
-              <RkText style={styles.title} rkType='header2'>{post.title}</RkText>
-              <RkText rkType='secondary2 hintColor'>{moment(post.pubDateTimestamp).fromNow()}</RkText>
+              <RkText style={styles.title} rkType='ItemTitle'>{post.title}</RkText>
+              <RkText rkType='TimeAgo'>{moment(post.pubDateTimestamp).fromNow()}</RkText>
             </View>
           </View>
           <View rkCardContent style={styles.content}>
             <View>
               { post.content.map((item, index) => (
-                <RkText key={index} rkType='primary3 bigLine' style={styles.paragraph}>{item}</RkText>
+                <RkText key={index} rkType='ItemContent' style={styles.paragraph}>{item}</RkText>
               ))}
             </View>
           </View>
