@@ -486,4 +486,5 @@ export const bootstrap = () => {
   })
 
   StatusBar.setBarStyle('dark-content', true)
+  StatusBar.setBackgroundColor('white')
 }

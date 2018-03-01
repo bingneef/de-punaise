@@ -1,7 +1,6 @@
 import React from 'react'
 import { View, Image } from 'react-native'
 import { RkText, RkStyleSheet } from 'react-native-ui-kitten'
-import firebase from 'react-native-firebase'
 import { Sentry } from 'react-native-sentry'
 
 export default class ErrorBoundary extends React.Component {

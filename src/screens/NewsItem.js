@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, Dimensions, StyleSheet, Platform, Image, View, TouchableOpacity, ActivityIndicator, StatusBar } from 'react-native'
+import { ScrollView, Dimensions, StyleSheet, Platform, Image, View, TouchableOpacity, ActivityIndicator } from 'react-native'
 import {
   RkCard,
   RkText,
