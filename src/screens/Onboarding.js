@@ -63,7 +63,7 @@ export default class App extends PureComponent {
   render() {
     return (
       <View style={{flex: 1}}>
-        <StatusBar barStyle='light-content' />
+        <StatusBar hidden={true} />
         <AppIntroSlider
           slides={slides}
           renderItem={this.renderItem}

@@ -15,7 +15,7 @@ import com.facebook.soloader.SoLoader;
 import io.invertase.firebase.RNFirebasePackage;
 // optional packages - add/remove as appropriate
 // import io.invertase.firebase.admob.RNFirebaseAdMobPackage; //Firebase AdMob
-// import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage; // Firebase Analytics
+import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage; // Firebase Analytics
 import io.invertase.firebase.auth.RNFirebaseAuthPackage; // Firebase Auth
 import io.invertase.firebase.config.RNFirebaseRemoteConfigPackage; // Firebase Remote Config
 // import io.invertase.firebase.crash.RNFirebaseCrashPackage; // Firebase Crash Reporting
@@ -48,7 +48,7 @@ public class MainApplication extends Application implements ReactApplication {
         new RNFirebasePackage(),
         // add/remove these packages as appropriate
         // new RNFirebaseAdMobPackage(),
-        // new RNFirebaseAnalyticsPackage(),
+        new RNFirebaseAnalyticsPackage(),
         new RNFirebaseAuthPackage(),
         new RNFirebaseRemoteConfigPackage(),
         // new RNFirebaseCrashPackage(),
