@@ -60,6 +60,10 @@ export const bootstrap = () => {
     fontFamily: theme => theme.fonts.family.regular
   })
 
+  RkTheme.setType('RkText', 'center', {
+    textAlign: 'center',
+  })
+
   RkTheme.setType('RkCard', 'blog', {
     container: {
       paddingHorizontal: 16,
@@ -111,5 +115,5 @@ export const bootstrap = () => {
   })
 
   StatusBar.setBarStyle('light-content', true)
-  StatusBar.setBackgroundColor(KittenTheme.colors.header.background)
+  StatusBar.setBackgroundColor(KittenTheme.colors.header.darkTop)
 }

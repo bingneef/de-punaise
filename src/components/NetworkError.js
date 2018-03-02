@@ -10,7 +10,7 @@ export default class NetworkError extends PureComponent {
       <View style={styles.root}>
         <View style={styles.container}>
           <Icon style={styles.navIcon} name="md-bug" size={160} />
-          <RkText style={styles.title} rkType='Title'>De server kan niet worden bereikt..</RkText>
+          <RkText style={styles.title} rkType='Title center'>De server kan niet worden bereikt..</RkText>
         </View>
       </View>
     )

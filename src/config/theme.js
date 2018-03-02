@@ -4,6 +4,7 @@ const Colors = {
   text: '#212121',
   accent: '#ff2824',
   header: {
+    darkTop: '#b71c1c',
     background: '#c62828',
     content: 'white',
   },
@@ -31,6 +32,7 @@ export const KittenTheme = {
       accent: Colors.accent,
     },
     header: {
+      darkTop: Colors.header.darkTop,
       background: Colors.header.background,
       content: Colors.header.content,
     },

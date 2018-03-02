@@ -15,6 +15,7 @@ import ImageViewer from 'react-native-image-zoom-viewer'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import NetworkError from '../components/NetworkError'
+import SocialBar from '../components/SocialBar'
 
 @graphql(gql`
   query($postId: String!) {
@@ -22,6 +23,7 @@ import NetworkError from '../components/NetworkError'
       title
       content
       pubDateTimestamp
+      views
       image:imageSized(size: "detail") {
         url
       }
@@ -112,6 +114,9 @@ export default class NewsItem extends Component {
               ))}
             </View>
           </View>
+          <View style={styles.footer} rkCardFooter>
+            <SocialBar views={post.views} />
+          </View>
         </RkCard>
       </ScrollView>
     )
@@ -125,6 +130,11 @@ const styles = RkStyleSheet.create(theme => ({
   },
   content: {
     borderBottomWidth: 0,
+  },
+  footer: {
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: theme.colors.border.base,
+    marginHorizontal: 4,
   },
   title: {
     marginBottom: 5

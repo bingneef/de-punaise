@@ -89,12 +89,12 @@ const limit = 10
 export default class NewsList extends React.Component {
   static navigationOptions = {
     headerLeft: (
-      <RkButton rkType='clear link' onPress={ handleSuggestionMail } color="#fff">
+      <RkButton rkType='clear link' onPress={ handleSuggestionMail }>
         <Icon style={styles.navIcon} name="lightbulb-on-outline" size={30} />
       </RkButton>
     ),
     headerRight: (
-      <RkButton rkType='clear link' onPress={ () => OpenSettings.openSettings() } color="#fff">
+      <RkButton rkType='clear link' onPress={ () => OpenSettings.openSettings() }>
         <Icon style={styles.navIcon} name="settings" size={30} />
       </RkButton>
     )
