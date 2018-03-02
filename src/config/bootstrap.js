@@ -1,6 +1,7 @@
 import {
   StatusBar,
-  StyleSheet
+  StyleSheet,
+  Platform,
 } from 'react-native'
 import {RkTheme} from 'react-native-ui-kitten'
 import {KittenTheme} from './theme'
@@ -11,7 +12,6 @@ import {scale} from '../utils/scale'
 moment.locale('nl')
 
 export const bootstrap = () => {
-
   RkTheme.setTheme(KittenTheme, null)
 
   RkTheme.setType('RkText', 'regular', {
@@ -115,5 +115,7 @@ export const bootstrap = () => {
   })
 
   StatusBar.setBarStyle('light-content', true)
-  StatusBar.setBackgroundColor(KittenTheme.colors.header.darkTop)
+  if (Platform.OS == 'android') {
+    StatusBar.setBackgroundColor(KittenTheme.colors.header.darkTop)
+  }
 }

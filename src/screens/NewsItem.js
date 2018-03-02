@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { ScrollView, Dimensions, StyleSheet, Platform, Image, View, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { ScrollView, Dimensions, StyleSheet, Platform, Image, View, TouchableOpacity, ActivityIndicator, StatusBar } from 'react-native'
 import {
   RkCard,
   RkText,
-  RkStyleSheet
+  RkStyleSheet,
 } from 'react-native-ui-kitten'
 import ParallaxScrollView from 'react-native-parallax-scroll-view'
 import { graphql } from 'react-apollo'
@@ -93,7 +93,8 @@ export default class NewsItem extends Component {
 
     return (
       <ScrollView style={styles.root}>
-        <Modal visible={this.state.showImageViewer} transparent={true}>
+        <Modal visible={this.state.showImageViewer} transparent={true} onRequestClose={() => this.setState({showImageViewer: false})}>
+          <StatusBar backgroundColor="black" />
           <ImageViewer imageUrls={[{url: post.detailImage.url}]} renderIndicator={() => null} />
           <Icon style={styles.navIcon} name="md-close-circle" size={40} onPress={this.closeImageView} />
         </Modal>

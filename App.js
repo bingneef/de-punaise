@@ -17,11 +17,12 @@ import './config/ReactotronConfig'
 if (!__DEV__) {
   Sentry.config(SENTRY_KEY).install()
 }
-bootstrap()
 
 class App extends React.Component {
   constructor() {
     super()
+
+    bootstrap()
   }
 
   render () {

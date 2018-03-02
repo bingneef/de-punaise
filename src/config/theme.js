@@ -1,4 +1,5 @@
-import {scale} from '../utils/scale'
+import { Platform } from 'react-native'
+import { scale } from '../utils/scale'
 
 const Colors = {
   text: '#212121',
@@ -18,7 +19,7 @@ const Fonts = {
   medium: 'HelveticaNeue-Medium',
   bold: 'HelveticaNeue-Bold',
   logo: 'AppleColorEmoji',
-  navTitle: 'Courier New',
+  navTitle: Platform.OS == 'ios' ? 'Courier New' : 'Roboto',
 }
 
 const FontBaseValue = scale(16)

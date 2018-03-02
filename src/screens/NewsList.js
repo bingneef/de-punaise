@@ -1,11 +1,9 @@
-import React from 'react'
-import { StyleSheet, FlatList, TouchableOpacity, Platform, Image, View, RefreshControl, ActivityIndicator, AppState } from 'react-native'
+import React, { Component } from 'react'
+import { FlatList, TouchableOpacity, Image, View, RefreshControl, ActivityIndicator, AppState } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import { NavigationActions } from 'react-navigation'
 import { RkCard, RkButton, RkStyleSheet, RkText } from 'react-native-ui-kitten'
 import { KittenTheme } from '../config/theme'
 import { truncate } from 'underscore.string'
-import { setUser, setPosts } from '../actions'
 import { connect } from 'react-redux'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
@@ -16,22 +14,26 @@ import OpenSettings from 'react-native-open-settings'
 import handleSuggestionMail from '../helpers/mail/handleSuggestionMail'
 import NetworkError from '../components/NetworkError'
 
-const styles = RkStyleSheet.create(theme => ({
-  root: {
-    backgroundColor: theme.colors.screen.base,
-    flex: 1,
-  },
-  navIcon: {
-    color: KittenTheme.colors.header.content,
-    padding: 12,
-  },
-  container: {
-    paddingBottom: 48,
-  },
-  footerComponent: {
-    marginVertical: 12,
+const styles = RkStyleSheet.create(theme => {
+  const themeObj = theme.name ? theme : KittenTheme
+
+  return {
+    root: {
+      backgroundColor: themeObj.colors.screen.base,
+      flex: 1,
+    },
+    navIcon: {
+      color: themeObj.colors.header.content,
+      padding: 12,
+    },
+    container: {
+      paddingBottom: 48,
+    },
+    footerComponent: {
+      marginVertical: 12,
+    }
   }
-}))
+})
 
 const limit = 10
 @graphql(gql`
@@ -86,7 +88,8 @@ const limit = 10
     }
   },
 })
-export default class NewsList extends React.Component {
+
+export default class NewsList extends Component {
   static navigationOptions = {
     headerLeft: (
       <RkButton rkType='clear link' onPress={ handleSuggestionMail }>
@@ -99,7 +102,6 @@ export default class NewsList extends React.Component {
       </RkButton>
     )
   }
-
 
   constructor() {
     super()
