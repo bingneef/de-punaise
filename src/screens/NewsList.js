@@ -3,6 +3,7 @@ import { StyleSheet, FlatList, TouchableOpacity, Platform, Image, View, RefreshC
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { NavigationActions } from 'react-navigation'
 import { RkCard, RkButton, RkStyleSheet, RkText } from 'react-native-ui-kitten'
+import { KittenTheme } from '../config/theme'
 import { truncate } from 'underscore.string'
 import { setUser, setPosts } from '../actions'
 import { connect } from 'react-redux'
@@ -21,29 +22,11 @@ const styles = RkStyleSheet.create(theme => ({
     flex: 1,
   },
   navIcon: {
-    color: theme.colors.text.base,
+    color: KittenTheme.colors.header.content,
     padding: 12,
   },
   container: {
     paddingBottom: 48,
-  },
-  header: {
-    justifyContent: 'flex-end',
-    paddingHorizontal: 0,
-  },
-  image: {
-    borderRadius: 4,
-  },
-  card: {
-    paddingHorizontal: 16,
-    borderTopWidth: 0,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: '#CECECE',
-    borderRadius: 0,
-  },
-  footer: {
-    paddingTop: 16,
-    paddingHorizontal: 0,
   },
   footerComponent: {
     marginVertical: 12,
@@ -162,16 +145,16 @@ export default class NewsList extends React.Component {
         delayPressIn={70}
         activeOpacity={0.8}
         onPress={() => this.props.navigation.navigate('NewsItem', {id: item.id})}>
-        <RkCard rkType='blog' style={styles.card}>
-          <View rkCardHeader style={styles.header}>
+        <RkCard rkType='blog'>
+          <View rkCardHeader>
             <View>
               <RkText rkType='TimeAgo'>{moment(item.pubDateTimestamp).fromNow()}</RkText>
             </View>
           </View>
-          <Image rkCardImg source={{uri: item.image.url}} style={styles.image} />
-          <View style={styles.footer} rkCardFooter>
-            <View style={{paddingHorizontal: 0}}>
-              <RkText style={{paddingHorizontal: 0}} rkType='ItemTitle'>{item.title}</RkText>
+          <Image rkCardImg source={{uri: item.image.url}} />
+          <View rkCardFooter>
+            <View>
+              <RkText rkType='ItemTitle'>{item.title}</RkText>
               <RkText rkType='ItemContent' numberOfLines={2}>{item.excerpt}</RkText>
             </View>
           </View>

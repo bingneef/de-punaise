@@ -6,12 +6,13 @@ import NewsList from '../screens/NewsList'
 import NewsItem from '../screens/NewsItem'
 import Onboarding from '../screens/Onboarding'
 import Main from '../screens/Main'
+import { KittenTheme } from '../config/theme'
 
 const newsListStackNavOptions = {
   title: <RkText rkType='NavTitle'>DEPUNAISE</RkText>,
   headerMode: 'none',
-  headerTintColor: '#181818',
-  headerStyle: { backgroundColor: 'white' },
+  headerTintColor: KittenTheme.colors.header.content,
+  headerStyle: { backgroundColor: KittenTheme.colors.header.background },
 }
 
 const MainNavigator = StackNavigator(
