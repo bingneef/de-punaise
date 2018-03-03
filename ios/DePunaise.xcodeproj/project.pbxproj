@@ -49,7 +49,6 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		BC67B2FB5E5E411DABD68F22 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F0738B0D95674B3A93BE2F2D /* Octicons.ttf */; };
 		BE4873CFE49841D5A3BE3B2C /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2489C9082D424715B4DB2451 /* libRCTNetwork.a */; };
-		C66AA4A32049D7CA0087F2B2 /* libRNWebGL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C66AA4A22049D7C30087F2B2 /* libRNWebGL.a */; };
 		C692AA5F203F7CCA00D81FC8 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C692AA5E203F7CCA00D81FC8 /* Launch Screen.storyboard */; };
 		C6B3D5E0204697480047768E /* libReact Native Open Settings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B3D5DF204697260047768E /* libReact Native Open Settings.a */; };
 		C6FCB31C203E25D500327CF0 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
@@ -338,13 +337,6 @@
 			remoteGlobalIDString = EBF21BFA1FC4989A0052F4D5;
 			remoteInfo = "jsinspector-tvOS";
 		};
-		C66AA4A12049D7C30087F2B2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C66AA4732049D7C30087F2B2 /* RNWebGL.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4107012F1ACB723B00C6AA39;
-			remoteInfo = RNWebGL;
-		};
 		C6B3D5DE204697260047768E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C6B3D5DA204697260047768E /* React Native Open Settings.xcodeproj */;
@@ -411,7 +403,6 @@
 		ADF4CB3C3BF44D3EBA8B78C4 /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
 		B7AFA8AA9A1CFD17320E9074 /* Pods-DePunaise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DePunaise.release.xcconfig"; path = "Pods/Target Support Files/Pods-DePunaise/Pods-DePunaise.release.xcconfig"; sourceTree = "<group>"; };
 		BD6DD77019C84604931D69A4 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
-		C66AA4732049D7C30087F2B2 /* RNWebGL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNWebGL.xcodeproj; path = "../node_modules/react-native-webgl/ios/RNWebGL.xcodeproj"; sourceTree = "<group>"; };
 		C692AA5E203F7CCA00D81FC8 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C6B3D5DA204697260047768E /* React Native Open Settings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "React Native Open Settings.xcodeproj"; path = "../node_modules/react-native-open-settings/React Native Open Settings.xcodeproj"; sourceTree = "<group>"; };
 		C6E14BCF203E19BD004D59AF /* DePunaise.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = DePunaise.entitlements; path = DePunaise/DePunaise.entitlements; sourceTree = "<group>"; };
@@ -436,7 +427,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C66AA4A32049D7CA0087F2B2 /* libRNWebGL.a in Frameworks */,
 				C6B3D5E0204697480047768E /* libReact Native Open Settings.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				C6FCB31C203E25D500327CF0 /* libRCTAnimation.a in Frameworks */,
@@ -647,7 +637,6 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				C66AA4732049D7C30087F2B2 /* RNWebGL.xcodeproj */,
 				C6B3D5DA204697260047768E /* React Native Open Settings.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -740,14 +729,6 @@
 			children = (
 				ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */,
 				8E7D4B021F8AFD6F00699FE4 /* libRCTBlob-tvOS.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		C66AA4742049D7C30087F2B2 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C66AA4A22049D7C30087F2B2 /* libRNWebGL.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -956,10 +937,6 @@
 				{
 					ProductGroup = 8E7D4B111F8AFD6F00699FE4 /* Products */;
 					ProjectRef = ADF4CB3C3BF44D3EBA8B78C4 /* RNFirebase.xcodeproj */;
-				},
-				{
-					ProductGroup = C66AA4742049D7C30087F2B2 /* Products */;
-					ProjectRef = C66AA4732049D7C30087F2B2 /* RNWebGL.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1237,13 +1214,6 @@
 			fileType = archive.ar;
 			path = "libjsinspector-tvOS.a";
 			remoteRef = C60A9EE4203DE39F00F354A5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		C66AA4A22049D7C30087F2B2 /* libRNWebGL.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNWebGL.a;
-			remoteRef = C66AA4A12049D7C30087F2B2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		C6B3D5DF204697260047768E /* libReact Native Open Settings.a */ = {
@@ -1599,7 +1569,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = Y4UBF4DJTK;
 				DISPLAY_NAME = DePunaise;
@@ -1635,7 +1605,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				DEVELOPMENT_TEAM = Y4UBF4DJTK;
 				DISPLAY_NAME = DePunaise;
 				HEADER_SEARCH_PATHS = (
