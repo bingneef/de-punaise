@@ -45,6 +45,8 @@ target 'DePunaise' do
   pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
   pod 'react-native-mail', :path => '../node_modules/react-native-mail'
+  pod 'react-native-webgl', :path => '../node_modules/react-native-webgl'
+
 end
 
 post_install do |installer|

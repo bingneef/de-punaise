@@ -148,6 +148,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-webgl')
     compile project(':react-native-sentry')
     compile project(':react-native-mail')
     compile project(':react-native-vector-icons')

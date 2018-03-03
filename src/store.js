@@ -7,7 +7,7 @@ export const initialState = {
   onboarding: {},
   rehydrated: false,
   navigation: {},
-  posts: [],
+  games: {},
 }
 
 const hydrate = store => next => async reducer => {

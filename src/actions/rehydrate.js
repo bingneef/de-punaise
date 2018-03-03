@@ -4,6 +4,7 @@ export const setHydrated = (rehydratedState = {}) => {
   return state => {
     let obj = {
       ...state,
+      games: rehydratedState.games || {},
       rehydrated: true,
     }
 

@@ -6,6 +6,7 @@ import NewsList from '../screens/NewsList'
 import NewsItem from '../screens/NewsItem'
 import Onboarding from '../screens/Onboarding'
 import Main from '../screens/Main'
+import Game from '../screens/Game'
 import { KittenTheme } from '../config/theme'
 
 const newsListStackNavOptions = {
@@ -17,6 +18,12 @@ const newsListStackNavOptions = {
 
 const MainNavigator = StackNavigator(
   {
+    Game: {
+      screen: Game,
+      navigationOptions: {
+        header: null,
+      },
+    },
     Main: {
       screen: Main,
       navigationOptions: {

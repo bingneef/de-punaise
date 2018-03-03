@@ -91,12 +91,17 @@ export default class NewsItem extends Component {
     const { post } = this.props.data
     const { showImageViewer } = this.state
 
+    Image.prefetch(post.detailImage.url)
+
     return (
       <ScrollView style={styles.root}>
         <Modal visible={this.state.showImageViewer} transparent={true} onRequestClose={() => this.setState({showImageViewer: false})}>
           <StatusBar backgroundColor="black" />
           <ImageViewer imageUrls={[{url: post.detailImage.url}]} renderIndicator={() => null} />
           <Icon style={styles.navIcon} name="md-close-circle" size={40} onPress={this.closeImageView} />
+
+          <TouchableOpacity style={styles.gameHack} onPress={() => this.props.navigation.replace('Game', { uri: post.detailImage.url })}>
+          </TouchableOpacity>
         </Modal>
         <RkCard rkType='article'>
           <TouchableOpacity onPress={this.openImageView}>
@@ -148,5 +153,12 @@ const styles = RkStyleSheet.create(theme => ({
     top: 24,
     right: 12,
     color: 'white',
+  },
+  gameHack: {
+    position: 'absolute',
+    top: 24,
+    left: 12,
+    width: 32,
+    height: 32,
   },
 }))
