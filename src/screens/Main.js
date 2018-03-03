@@ -27,8 +27,7 @@ class Main extends Component {
     if (!onboarding.completed) {
       this.props.navigation.replace('Onboarding')
     } else {
-      // this.props.navigation.replace('NewsList')
-      this.props.navigation.replace('Game')
+      this.props.navigation.replace('NewsList')
     }
 
     SplashScreen.hide()

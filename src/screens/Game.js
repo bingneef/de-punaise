@@ -3,7 +3,7 @@ import { StatusBar, StyleSheet, Dimensions, View, Text, Image } from "react-nati
 import { RkButton, RkStyleSheet } from "react-native-ui-kitten"
 import { GameEngine } from "react-native-game-engine"
 import { Physics, CreateBox, MoveBox, CleanBoxes, MovingBackground } from "../game/systems"
-import { Box, Ball, Floor, Background } from "../game/renderers"
+import { Box, Ball, Background } from "../game/renderers"
 import Icon from 'react-native-vector-icons/Ionicons'
 import Matter from "matter-js"
 

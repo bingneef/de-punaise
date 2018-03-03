@@ -62,34 +62,6 @@ class Ball extends Component {
   }
 }
 
-class Floor extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const width = this.props.size[0];
-    const height = this.props.size[1];
-    const x = this.props.body.position.x - width / 2;
-    const y = this.props.body.position.y - height / 2;
-
-    return (
-      <Image source={require('../../assets/flappy/base.png')}
-        style={
-          {
-            position: "absolute",
-            left: x,
-            top: y,
-            width: width,
-            height: height,
-            resizeMode: "repeat"
-          }
-        }
-      />
-    );
-  }
-}
-
 class Background extends Component {
   constructor(props) {
     super(props);
@@ -125,6 +97,5 @@ class Background extends Component {
 export {
   Box,
   Ball,
-  Floor,
   Background,
 };
