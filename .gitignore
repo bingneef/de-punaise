@@ -66,4 +66,6 @@ DePunaise.aip
 .expo/
 /ios/Pods/
 google-services.json
+google-services.prod.json
 GoogleService-Info.plist
+GoogleService-Info.prod.plist
