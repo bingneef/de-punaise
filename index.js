@@ -4,7 +4,7 @@ import { SENTRY_KEY } from 'react-native-dotenv'
 
 import { bootstrap } from './src/config/bootstrap'
 import { registerScreens } from './src/screens'
-import { RegisterNavButton } from './src/components/NavButtons'
+import { RegisterComponents } from './src/helpers/navigation'
 
 import './config/ReactotronConfig'
 
@@ -12,7 +12,7 @@ if (!__DEV__) {
   Sentry.config(SENTRY_KEY).install()
 }
 
-RegisterNavButton()
+RegisterComponents()
 registerScreens()
 bootstrap()
 

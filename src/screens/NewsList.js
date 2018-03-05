@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import { FlatList, TouchableOpacity, Image, View, RefreshControl, ActivityIndicator, AppState } from 'react-native'
-
+import { FlatList, Dimensions, TouchableOpacity, Image, View, RefreshControl, ActivityIndicator, AppState } from 'react-native'
 import { RkCard, RkStyleSheet, RkText } from 'react-native-ui-kitten'
-import { KittenTheme } from '../config/theme'
 import { truncate } from 'underscore.string'
 import { connect } from 'react-redux'
 import { graphql } from 'react-apollo'
@@ -10,6 +8,7 @@ import gql from 'graphql-tag'
 import moment from 'moment'
 import firebase from 'react-native-firebase'
 
+import { KittenTheme } from '../config/theme'
 import NetworkError from '../components/NetworkError'
 
 const styles = RkStyleSheet.create(theme => {
@@ -41,7 +40,7 @@ const limit = 10
         title
         excerpt(size: 100)
         pubDateTimestamp
-        image:imageSized {
+        image:imageSized(size: "detail") {
           url
         }
       }
@@ -92,6 +91,8 @@ export default class NewsList extends Component {
     navBarBackgroundColor: 'red',
     statusBarTextColorScheme: 'light',
     navBarButtonColor: 'white',
+    navBarTextFontFamily: KittenTheme.fonts.family.navTitle,
+    navBarTextFontSize: KittenTheme.fonts.sizes.navTitle,
   }
   static navigatorButtons = {
     leftButtons: [
@@ -131,7 +132,7 @@ export default class NewsList extends Component {
   }
 
   componentWillMount() {
-    this.props.navigator.setTitle({title: 'DePunaise'})
+    this.props.navigator.setTitle({title: 'DEPUNAISE'})
   }
 
   componentDidMount() {

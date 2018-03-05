@@ -4,7 +4,7 @@ import { RkButton } from 'react-native-ui-kitten'
 import OpenSettings from 'react-native-open-settings'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
-import handleSuggestionMail from '../helpers/mail/handleSuggestionMail'
+import handleSuggestionMail from './mail/handleSuggestionMail'
 
 const TipsButton = ({color}) => {
   return (
@@ -20,7 +20,7 @@ const SettingsButton = ({color}) => (
   </RkButton>
 )
 
-export const RegisterNavButton = () => {
+export const RegisterComponents = () => {
   Navigation.registerComponent('TipsButton', () => TipsButton)
   Navigation.registerComponent('SettingsButton', () => SettingsButton)
 }
