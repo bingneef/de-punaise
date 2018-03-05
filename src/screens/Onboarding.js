@@ -45,6 +45,7 @@ const slides = [
 export default class Onboarding extends PureComponent {
   static navigatorStyle = {
     navBarHidden: true,
+    statusBarHidden: true,
     statusBarTextColorScheme: 'light',
   }
 

@@ -29,55 +29,46 @@ import io.invertase.firebase.perf.RNFirebasePerformancePackage; // Firebase Perf
 
 import java.util.Arrays;
 import java.util.List;
+import com.reactnativenavigation.NavigationApplication;
 
-public class MainApplication extends Application implements ReactApplication {
-
-  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
-    @Override
-    public boolean getUseDeveloperSupport() {
-      return BuildConfig.DEBUG;
-    }
-
-    @Override
-    protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-        new MainReactPackage(),
-        new RNSentryPackage(MainApplication.this),
-        new RNMail(),
-        new OpenSettingsPackage(),
-        new VectorIconsPackage(),
-        new SplashScreenReactPackage(),
-        new RNFirebasePackage(),
-        // add/remove these packages as appropriate
-        // new RNFirebaseAdMobPackage(),
-        new RNFirebaseAnalyticsPackage(),
-        new RNFirebaseAuthPackage(),
-        new RNFirebaseRemoteConfigPackage(),
-        // new RNFirebaseCrashPackage(),
-        // new RNFirebaseDatabasePackage(),
-        // new RNFirebaseFirestorePackage()
-        // new RNFirebaseStoragePackage(),
-        // new RNFirebaseCrashlyticsPackage(),
-        new RNFirebaseMessagingPackage(),
-        new RNFirebasePerformancePackage()
-
-      );
-    }
-
-    @Override
-    protected String getJSMainModuleName() {
-      return "index";
-    }
-  };
+public class MainApplication extends NavigationApplication {
 
   @Override
-  public ReactNativeHost getReactNativeHost() {
-    return mReactNativeHost;
+  public List<ReactPackage> createAdditionalReactPackages() {
+    return getPackages();
+  }
+
+  @Override
+  public boolean isDebug() {
+    return BuildConfig.DEBUG;
+  }
+
+  protected List<ReactPackage> getPackages() {
+    return Arrays.<ReactPackage>asList(
+      new MainReactPackage(),
+      new RNSentryPackage(MainApplication.this),
+      new RNMail(),
+      new OpenSettingsPackage(),
+      new VectorIconsPackage(),
+      new SplashScreenReactPackage(),
+      new RNFirebasePackage(),
+      new RNFirebaseAnalyticsPackage(),
+      new RNFirebaseAuthPackage(),
+      new RNFirebaseRemoteConfigPackage(),
+      new RNFirebaseMessagingPackage(),
+      new RNFirebasePerformancePackage()
+
+    );
   }
 
   @Override
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
+  }
+
+  @Override
+  public String getJSMainModuleName() {
+      return "index";
   }
 }

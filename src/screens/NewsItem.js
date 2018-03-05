@@ -14,6 +14,7 @@ import { Modal, Button } from 'react-native'
 import ImageViewer from 'react-native-image-zoom-viewer'
 import Icon from 'react-native-vector-icons/Ionicons'
 
+import { KittenTheme } from '../config/theme'
 import NetworkError from '../components/NetworkError'
 import SocialBar from '../components/SocialBar'
 
@@ -46,6 +47,13 @@ import SocialBar from '../components/SocialBar'
 export default class NewsItem extends Component {
   static navigatorStyle = {
     navBarButtonColor: 'white',
+    navBarTextColor: 'white',
+    navBarBackgroundColor: 'red',
+    statusBarTextColorScheme: 'light',
+    navBarButtonColor: 'white',
+    statusBarColor: KittenTheme.colors.header.darkTop,
+    navBarTextFontFamily: KittenTheme.fonts.family.navTitle,
+    navBarTextFontSize: KittenTheme.fonts.sizes.navTitle,
   }
 
   constructor() {

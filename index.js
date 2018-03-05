@@ -21,6 +21,7 @@ Navigation.startSingleScreenApp({
     screen: 'Main',
     navigatorStyle: {
       navBarHidden: true,
+      statusBarHidden: true,
     }
   },
 })

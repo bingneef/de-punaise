@@ -91,6 +91,7 @@ export default class NewsList extends Component {
     navBarBackgroundColor: 'red',
     statusBarTextColorScheme: 'light',
     navBarButtonColor: 'white',
+    statusBarColor: KittenTheme.colors.header.darkTop,
     navBarTextFontFamily: KittenTheme.fonts.family.navTitle,
     navBarTextFontSize: KittenTheme.fonts.sizes.navTitle,
   }
@@ -162,7 +163,7 @@ export default class NewsList extends Component {
       <TouchableOpacity
         delayPressIn={70}
         activeOpacity={0.8}
-        onPress={() => this.props.navigator.push({screen: 'NewsItem', passProps: {id: item.id}})}>
+        onPress={() => this.props.navigator.push({screen: 'NewsItem', animationType: 'slide-horizontal', passProps: {id: item.id}})}>
         <RkCard rkType='blog'>
           <View rkCardHeader>
             <View>
