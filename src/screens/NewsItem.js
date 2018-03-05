@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, Dimensions, StyleSheet, Platform, Image, View, TouchableOpacity, ActivityIndicator, StatusBar } from 'react-native'
+import { ScrollView, Dimensions, StyleSheet, Platform, Image, View, TouchableOpacity, ActivityIndicator } from 'react-native'
 import {
   RkCard,
   RkText,
@@ -36,7 +36,7 @@ import SocialBar from '../components/SocialBar'
   options: props => {
     return {
       variables: {
-        postId: props.navigation.state.params.id,
+        postId: props.id,
       },
       fetchPolicy: 'cache-and-network',
       errorPolicy: 'none',
@@ -44,6 +44,10 @@ import SocialBar from '../components/SocialBar'
   },
 })
 export default class NewsItem extends Component {
+  static navigatorStyle = {
+    navBarButtonColor: 'white',
+  }
+
   constructor() {
     super()
 
@@ -68,7 +72,7 @@ export default class NewsItem extends Component {
   }
 
   componentDidMount() {
-    firebase.analytics().logEvent('post_view', {id: this.props.navigation.state.params.id})
+    firebase.analytics().logEvent('post_view', {id: this.props.id})
   }
 
   render() {
@@ -94,7 +98,6 @@ export default class NewsItem extends Component {
     return (
       <ScrollView style={styles.root}>
         <Modal visible={this.state.showImageViewer} transparent={true} onRequestClose={() => this.setState({showImageViewer: false})}>
-          <StatusBar backgroundColor="black" />
           <ImageViewer imageUrls={[{url: post.detailImage.url}]} renderIndicator={() => null} />
           <Icon style={styles.navIcon} name="md-close-circle" size={40} onPress={this.closeImageView} />
         </Modal>

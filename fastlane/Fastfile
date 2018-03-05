@@ -13,6 +13,16 @@ platform :ios do
     match(app_identifier: 'com.snowflake.depunaise', type: 'appstore', readonly: true)
   end
 
+  lane :set_env_files do
+    sh("mv ./../ios/GoogleService-Info.plist ./../ios/GoogleService-Info.dev.plist")
+    sh("mv ./../ios/GoogleService-Info.prod.plist ./../ios/GoogleService-Info.plist")
+  end
+
+  lane :reset_env_files do
+    sh("mv ./../ios/GoogleService-Info.plist ./../ios/GoogleService-Info.prod.plist")
+    sh("mv ./../ios/GoogleService-Info.dev.plist ./../ios/GoogleService-Info.plist")
+  end
+
   desc 'Build the iOS application.'
   private_lane :build do
     certificates

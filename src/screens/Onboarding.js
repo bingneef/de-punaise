@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { View, StyleSheet, StatusBar } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import AppIntroSlider from 'react-native-app-intro-slider'
 import { connect } from 'react-redux'
 import firebase from 'react-native-firebase'
@@ -42,7 +42,12 @@ const slides = [
 ]
 
 @connect()
-export default class App extends PureComponent {
+export default class Onboarding extends PureComponent {
+  static navigatorStyle = {
+    navBarHidden: true,
+    statusBarTextColorScheme: 'light',
+  }
+
   constructor(props) {
     super(props)
 
@@ -53,7 +58,12 @@ export default class App extends PureComponent {
     await requestNotifications()
     firebase.analytics().logEvent('onboarding', {completed: true})
     this.props.dispatch(setOnboarding({completed: true}))
-    this.props.navigation.replace('NewsList')
+
+    this.props.navigator.resetTo({
+      screen: 'NewsList',
+      animated: true,
+      animationType: 'fade',
+    })
   }
 
   renderItem (props) {
@@ -63,7 +73,6 @@ export default class App extends PureComponent {
   render() {
     return (
       <View style={{flex: 1}}>
-        <StatusBar hidden={true} />
         <AppIntroSlider
           slides={slides}
           renderItem={this.renderItem}

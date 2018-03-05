@@ -45,6 +45,7 @@
     "react-native-firebase": "^3.2.2",
     "react-native-image-zoom-viewer": "^2.0.20",
     "react-native-mail": "^3.0.5",
+    "react-native-navigation": "^1.1.396",
     "react-native-open-settings": "^1.0.1",
     "react-native-parallax-scroll-view": "^0.20.1",
     "react-native-sentry": "^0.34.0",

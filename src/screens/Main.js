@@ -8,27 +8,26 @@ import { setupNotifications } from '../services/notifications'
 import { rehydrate, fetchRemoteConfig, anonymousLogin } from '../actions'
 
 @connect(state => ({
-  rehydrated: state.rehydrated,
-  remoteConfig: state.remoteConfig,
-  user: state.user,
   onboarding: state.onboarding,
 }))
-class Main extends Component {
+export default class Main extends Component {
   async componentDidMount () {
     // Prevent race issue and don't call them at the same time
     await this.props.dispatch(rehydrate())
     await this.props.dispatch(fetchRemoteConfig())
     await this.props.dispatch(anonymousLogin())
 
-    setupNotifications(this.props.navigation)
+    setupNotifications(this.props.navigator)
 
     const { onboarding } = this.props
 
-    if (!onboarding.completed) {
-      this.props.navigation.replace('Onboarding')
-    } else {
-      this.props.navigation.replace('NewsList')
-    }
+    const screen = onboarding.completed ? 'NewsList' : 'Onboarding'
+
+    this.props.navigator.resetTo({
+      screen,
+      animated: true,
+      animationType: 'fade',
+    })
 
     SplashScreen.hide()
   }
@@ -37,5 +36,3 @@ class Main extends Component {
     return <View style={{ flex: 1, backgroundColor: 'white' }} />
   }
 }
-
-export default withNavigation(Main)

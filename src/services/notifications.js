@@ -1,14 +1,18 @@
 import firebase from 'react-native-firebase'
-import { NavigationActions } from 'react-navigation';
 
-
-const handleMessage = (navigation, args) => {
+const handleMessage = (navigator, args) => {
   if (!args.postId) {
     return
   }
 
-  navigation.replace('NewsList')
-  navigation.navigate('NewsItem', { id: args.postId })
+  navigator.resetTo({
+    screen: 'NewsList',
+    animated: false,
+  })
+  navigator.push({
+    screen: 'NewsItem',
+    passProps: {id: item.id},
+  })
 }
 
 export const requestNotifications = async () => {
@@ -16,11 +20,11 @@ export const requestNotifications = async () => {
   await firebase.messaging().subscribeToTopic('news')
 }
 
-export const setupNotifications = async (navigation) => {
+export const setupNotifications = async (navigator) => {
   try {
     const notificationData = await firebase.messaging().getInitialNotification()
     if (notificationData) {
-      handleMessage(navigation, notificationData)
+      handleMessage(navigator, notificationData)
     }
   } catch (e) { }
 }

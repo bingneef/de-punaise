@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FlatList, TouchableOpacity, Image, View, RefreshControl, ActivityIndicator, AppState } from 'react-native'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import { RkCard, RkButton, RkStyleSheet, RkText } from 'react-native-ui-kitten'
+
+import { RkCard, RkStyleSheet, RkText } from 'react-native-ui-kitten'
 import { KittenTheme } from '../config/theme'
 import { truncate } from 'underscore.string'
 import { connect } from 'react-redux'
@@ -9,9 +9,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import moment from 'moment'
 import firebase from 'react-native-firebase'
-import OpenSettings from 'react-native-open-settings'
 
-import handleSuggestionMail from '../helpers/mail/handleSuggestionMail'
 import NetworkError from '../components/NetworkError'
 
 const styles = RkStyleSheet.create(theme => {
@@ -24,7 +22,6 @@ const styles = RkStyleSheet.create(theme => {
     },
     navIcon: {
       color: themeObj.colors.header.content,
-      padding: 12,
     },
     container: {
       paddingBottom: 48,
@@ -90,17 +87,31 @@ const limit = 10
 })
 
 export default class NewsList extends Component {
-  static navigationOptions = {
-    headerLeft: (
-      <RkButton rkType='clear link' onPress={ handleSuggestionMail }>
-        <Icon style={styles.navIcon} name="lightbulb-on-outline" size={30} />
-      </RkButton>
-    ),
-    headerRight: (
-      <RkButton rkType='clear link' onPress={ () => OpenSettings.openSettings() }>
-        <Icon style={styles.navIcon} name="settings" size={30} />
-      </RkButton>
-    )
+  static navigatorStyle = {
+    navBarTextColor: 'white',
+    navBarBackgroundColor: 'red',
+    statusBarTextColorScheme: 'light',
+    navBarButtonColor: 'white',
+  }
+  static navigatorButtons = {
+    leftButtons: [
+      {
+        id: 'tips-button',
+        component: 'TipsButton',
+        passProps: {
+          color: 'white',
+        }
+      },
+    ],
+    rightButtons: [
+      {
+        id: 'settings-button',
+        component: 'SettingsButton',
+        passProps: {
+          color: 'white',
+        }
+      },
+    ]
   }
 
   constructor() {
@@ -117,6 +128,10 @@ export default class NewsList extends Component {
       showLoader: false,
       appState: AppState.currentState,
     }
+  }
+
+  componentWillMount() {
+    this.props.navigator.setTitle({title: 'DePunaise'})
   }
 
   componentDidMount() {
@@ -146,7 +161,7 @@ export default class NewsList extends Component {
       <TouchableOpacity
         delayPressIn={70}
         activeOpacity={0.8}
-        onPress={() => this.props.navigation.navigate('NewsItem', {id: item.id})}>
+        onPress={() => this.props.navigator.push({screen: 'NewsItem', passProps: {id: item.id}})}>
         <RkCard rkType='blog'>
           <View rkCardHeader>
             <View>

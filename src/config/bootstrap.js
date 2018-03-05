@@ -113,9 +113,4 @@ export const bootstrap = () => {
       alignItems: 'center'
     }
   })
-
-  StatusBar.setBarStyle('light-content', true)
-  if (Platform.OS == 'android') {
-    StatusBar.setBackgroundColor(KittenTheme.colors.header.darkTop)
-  }
 }
