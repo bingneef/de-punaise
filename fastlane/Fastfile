@@ -13,11 +13,23 @@ platform :ios do
     match(app_identifier: 'com.snowflake.depunaise', type: 'appstore', readonly: true)
   end
 
+  private_lane :set_env_files do
+    sh("mv ./../ios/GoogleService-Info.plist ./../ios/GoogleService-Info.dev.plist")
+    sh("mv ./../ios/GoogleService-Info.prod.plist ./../ios/GoogleService-Info.plist")
+  end
+
+  private_lane :reset_env_files do
+    sh("mv ./../ios/GoogleService-Info.plist ./../ios/GoogleService-Info.prod.plist")
+    sh("mv ./../ios/GoogleService-Info.dev.plist ./../ios/GoogleService-Info.plist")
+  end
+
   desc 'Build the iOS application.'
   private_lane :build do
+    set_env_files
     certificates
     increment_build_number(xcodeproj: './ios/DePunaise.xcodeproj')
     gym(scheme: 'DePunaise', workspace: './ios/DePunaise.xcworkspace')
+    reset_env_files
   end
 
   desc 'Ship to Testflight.'
@@ -32,6 +44,16 @@ end
 platform :android do
   def increment_version_code(gradle_build: 'android/app/build.gradle')
     sh %Q{cd ../ && echo "$(awk '{sub(/versionCode [[:digit:]]+$/,"versionCode "$2+1)}1' #{gradle_build})" > #{gradle_build} && cd -}
+  end
+
+  private_lane :set_env_files do
+    sh("mv ./../android/app/google-services.json ./../android/app/google-services.dev.json")
+    sh("mv ./../android/app/google-services.prod.json ./../android/app/google-services.json")
+  end
+
+  private_lane :reset_env_files do
+    sh("mv ./../android/app/google-services.json ./../android/app/google-services.prod.json")
+    sh("mv ./../android/app/google-services.dev.json ./../android/app/google-services.json")
   end
 
   desc 'Build the Android application.'
