@@ -13,10 +13,10 @@ const handleMessage = (navigation, args) => {
 
 export const requestNotifications = async () => {
   await firebase.messaging().requestPermissions()
-  await firebase.messaging().subscribeToTopic('news')
 }
 
 export const setupNotifications = async (navigation) => {
+  await firebase.messaging().subscribeToTopic('news')
   try {
     const notificationData = await firebase.messaging().getInitialNotification()
     if (notificationData) {
